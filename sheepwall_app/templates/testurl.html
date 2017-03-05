@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <script src="../../static/js/common.js"></script>
+    <title>Test</title>
+    <h1>Test View</h1>
+</head>
+<body>
+    {% for wifiuser, latest_log in zip(all_user_set, latest_log_set) %}
+        <li>{{ wifiuser.local_ip }} {{ wifiuser.wechat_id }} {{ latest_log.access_time }}</li>
+    {% endfor %}
+</body>
+</html>
