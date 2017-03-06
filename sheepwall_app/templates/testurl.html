@@ -9,7 +9,7 @@
 </head>
 <body>
     {% for wifiuser, result_list in result_set.iteritems %}
-        <li>{{ wifiuser.wechat_nickname }} {{ result_list.0.local_ip }} {{ result_list.1.access_time }}</li>
+        <li>{{ wifiuser.wechat_nickname }} {{ result_list.0.local_ip }} {{ result_list.1.app_action }} {{ result_list.1.access_time|date:"H:i:s" }}</li>
     {% endfor %}
 </body>
 </html>

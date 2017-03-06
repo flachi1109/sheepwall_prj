@@ -35,3 +35,15 @@ def get_alluser_lastest_log(requet):
         result_set[wifi_user] = result_list
 
     return render(requet, 'testurl.html', {'result_set':result_set})
+
+def get_latest5_action(wifiuser_id):
+    '''
+     Get the users' last five logs;
+
+    :param wifiuser_id: wechat user's id
+    :return: The first five entries in the app behavior log. It is a QuerySet.
+    '''
+    wifiuser_item = WifiUser.objects.get(id=wifiuser_id)
+    wechat_to_ip = wifiuser_item.wechattolocalip_set.get().local_ip
+
+    return AppBehaviorLog.object.get(from_ip=wechat_to_ip).order_by('-access_time')[0:5]
