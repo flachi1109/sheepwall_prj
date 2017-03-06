@@ -8,8 +8,8 @@
     <h1>Test View</h1>
 </head>
 <body>
-    {% for wifiuser, latest_log in zip(all_user_set, latest_log_set) %}
-        <li>{{ wifiuser.local_ip }} {{ wifiuser.wechat_id }} {{ latest_log.access_time }}</li>
+    {% for wifiuser, result_list in result_set.iteritems %}
+        <li>{{ wifiuser.wechat_nickname }} {{ result_list.0.local_ip }} {{ result_list.1.access_time }}</li>
     {% endfor %}
 </body>
 </html>
