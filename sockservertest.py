@@ -13,24 +13,31 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
             syslog_type_msg = res.group('syslog_type')
 
             if syslog_type_msg.find('AUDIT') > -1:  # Find whether there is keyword 'AUDIT' in the syslog
-                pattern = re.compile(r'SrcIPAddr\(1003\)=(?P<from_ip>[0-9|\.]+);.+Application\(1002\)=(?P<app_name>\w+)'
-                                     r';Behavior\(1001\)=(?P<app_action>\w+);BehaviorContent\(1102\)={(Sender_addr\(1106\)=(?P<mail_from>.*))?'
-                                     r'(,Receiver_addr\(1107\)=(?P<mail_to>.*))?(,Subject\(1108\)=(?P<subject>.*))?'
-                                     r'(,Body\(1109\)=(?P<body>.*))?(Account\(1103\)=(?P<app_acount>.*))?(,Content\(1104\)=(?P<app_keyword>.*))?'
-                                     r'(,FileName\(1097\)=(?P<file_name>.*))?(,FileSize\(1105\)=(?P<file_siet>.*))?}'
-                                     r'.*;Client\(1110\)=(?P<os_type>\w*);SoftVersion\(1111\)=(?P<app_version>.*);Action\(1053\)')
-                # Format behavior_log
-                behavior_log = res.group('behavior').replace('\"','').replace('\'','')
-                behavior_log = re.sub(r'(\(\d+\)=)(.*?)([}|;|,|{][;|}|A-Z])', '\g<1>\"\g<2>\"\g<3>', behavior_log)
-                behavior_log = re.sub(r'(\w+)(\(\d+\))=', '"\g<1>\"=', behavior_log)
-                behavior_log = behavior_log.replace('\"\"{','{').replace(';}','}').replace(';',',')
-                behavior_log = re.sub(r'(\"=)([a-zA-Z]+),$', '\g<1>\"\g<2>\"', behavior_log)
-                behavior_log = '{' + behavior_log + '}'
-                behavior_log = behavior_log.replace('=', ':')
 
-                # Generate behavior_log dictionary
-                behavior_log_dict = eval(behavior_log)
+                behavior_log_dict = {}
                 behavior_log_dict['access_time'] = syslog_type_msg.split(' ')[3]  # Save access_time to the dict
+
+                pattern = re.compile(r'SrcIPAddr\(1003\)=(?P<from_ip>[0-9|\.]+);.+Application\(1002\)=(?P<app_name>\w+);'
+                                     r'Behavior\(1101\)=(?P<app_action>\w+);BehaviorContent\(1102\)={(Sender_addr\(1106\)'
+                                     r'=(?P<mail_from>.*?))?(,Receiver_addr\(1107\)=(?P<mail_to>.*?))?(,Subject\(1108\)'
+                                     r'=(?P<mail_subject>.*?))?(,Body\(1109\)=(?P<mail_body>.*?))?(Account\(1103\)=(?P<app_account>.*?))'
+                                     r'?(,Content\(1104\)=(?P<app_keyword>.*?))?(,FileName\(1097\)=(?P<trans_filename>.*?))?'
+                                     r'(,FileSize\(1105\)=(?P<trans_filesize>.*?))?}.*;Client\(1110\)=(?P<os_type>\w*?)'
+                                     r';SoftVersion\(1111\)=(?P<app_version>.*?);Action\(1053\)')
+                behavior_log = pattern.search(res.group('behavior'))
+
+                behavior_log_dict['from_ip'] = behavior_log.group('from_ip')
+                behavior_log_dict['app_name'] = behavior_log.group('app_name')
+                behavior_log_dict['app_action'] = behavior_log.group('app_action')
+                behavior_log_dict['mail_from'] = behavior_log.group('mail_from')
+                behavior_log_dict['mail_to'] = behavior_log.group('mail_to')
+                behavior_log_dict['mail_subject'] = behavior_log.group('mail_subject')
+                behavior_log_dict['mail_body'] = behavior_log.group('mail_body')
+                behavior_log_dict['app_account'] = behavior_log.group('app_account')
+                behavior_log_dict['trans_filename'] = behavior_log.group('trans_filename')
+                behavior_log_dict['trans_filesize'] = behavior_log.group('trans_filesize')
+                behavior_log_dict['os_type'] = behavior_log.group('os_type')
+                behavior_log_dict['app_version'] = behavior_log.group('app_version')
 
                 return behavior_log_dict
             else:
@@ -43,7 +50,7 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
         syslog_msg = self.request[0].strip()
         behavior_log_dict = self.make_syslog_dict(syslog_msg)
         if behavior_log_dict:
-            print behavior_log_dict
+            behavior_item = App
 
 
 def start_syslog_server(host, port):
