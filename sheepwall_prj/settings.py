@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'sheepwall_app'
+	'sheepwall_app',
+    'django_rundirect',
 )
 
 MIDDLEWARE_CLASSES = (

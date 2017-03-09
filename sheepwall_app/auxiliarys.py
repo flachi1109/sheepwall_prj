@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import SocketServer
 import re
-from models import AppBehaviorLog
+from sheepwall_app.models import AppBehaviorLog
 
 class SyslogHandler(SocketServer.BaseRequestHandler):
     '''
@@ -51,7 +51,10 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
         syslog_msg = self.request[0].strip()
         behavior_log_dict = self.make_syslog_dict(syslog_msg)
         if behavior_log_dict:
-            behavior_item = AppBehaviorLog(behavior_log_dict)
+            behavior_item = AppBehaviorLog()
+            for key,value in behavior_log_dict.iteritems():
+                exec_str = 'behavior_item.%s=\'%s\'' % (key, value)
+                exec(exec_str)
             behavior_item.save()
             print 'Yes,saved'
 
@@ -59,3 +62,7 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
 def start_syslog_server(host, port):
     syslog_server = SocketServer.UDPServer((host, port), SyslogHandler)
     syslog_server.serve_forever()
+
+if __name__ == '__main__':
+    host, port = "localhost", 9999
+    start_syslog_server(host, port)
