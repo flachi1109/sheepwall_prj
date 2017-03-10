@@ -21,8 +21,8 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
                 pattern = re.compile(r'SrcIPAddr\(1003\)=(?P<from_ip>[0-9|\.]+);.+Application\(1002\)=(?P<app_name>\w+);'
                                      r'Behavior\(1101\)=(?P<app_action>\w+);BehaviorContent\(1102\)={(Sender_addr\(1106\)'
                                      r'=(?P<mail_from>.*?))?(,Receiver_addr\(1107\)=(?P<mail_to>.*?))?(,Subject\(1108\)'
-                                     r'=(?P<mail_subject>.*?))?(,Body\(1109\)=(?P<mail_body>.*?))?(Account\(1103\)=(?P<app_account>.*?))'
-                                     r'?(,Content\(1104\)=(?P<app_keyword>.*?))?(,FileName\(1097\)=(?P<trans_filename>.*?))?'
+                                     r'=(?P<mail_subject>.*?))?(,Body\(1109\)=(?P<mail_body>.*?))?(Keyword\(1095\)=(?P<app_keyword>.*?))?(Account\(1103\)=(?P<app_account>.*?))'
+                                     r'?(,Content\(1104\)=(?P<app_content>.*?))?(,FileName\(1097\)=(?P<trans_filename>.*?))?'
                                      r'(,FileSize\(1105\)=(?P<trans_filesize>.*?))?}.*;Client\(1110\)=(?P<os_type>\w*?)'
                                      r';SoftVersion\(1111\)=(?P<app_version>.*?);Action\(1053\)')
                 behavior_log = pattern.search(res.group('behavior'))
@@ -35,8 +35,10 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
                 behavior_log_dict['mail_subject'] = behavior_log.group('mail_subject')
                 behavior_log_dict['mail_body'] = behavior_log.group('mail_body')
                 behavior_log_dict['app_account'] = behavior_log.group('app_account')
+                behavior_log_dict['app_content'] = behavior_log.group('app_content')
                 behavior_log_dict['trans_filename'] = behavior_log.group('trans_filename')
                 behavior_log_dict['trans_filesize'] = behavior_log.group('trans_filesize')
+                behavior_log_dict['app_keyword'] = behavior_log.group('app_keyword')
                 behavior_log_dict['os_type'] = behavior_log.group('os_type')
                 behavior_log_dict['app_version'] = behavior_log.group('app_version')
 
