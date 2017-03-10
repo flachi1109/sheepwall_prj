@@ -3,6 +3,18 @@ import SocketServer
 import re
 from sheepwall_app.models import AppBehaviorLog
 
+BEHAVIOR_CONTENT_DES = {'Version':'软件版本', 'Client':'操作系统', 'Account':'账号', 'Keyword':'关键字',\
+                       'Content':'关键字', 'Sender_addr':'发件人', 'Receiver_addr':'收件人', 'Subject':'邮件主题',\
+                       'Body':'邮件正文', 'FileName':'文件名', 'FileSize':'文件大小'}
+BEHAVIOR_TYPE_DES = {'Login':'登录', 'SendText':'发消息', 'SendVideo':'发送视频', 'Audio':'语音', 'FileTransfer':'传文件',\
+                    'SendPicture':'发送图片', 'Shake':'摇一摇', 'LBSFind':'附近的人', 'Bottle':'漂流瓶', \
+                    'FriendCircle':'朋友圈', 'UploadFile':'上传文件', 'UploadAudio':'上传语音', 'Browser':'浏览',\
+                    'Search':'搜索', 'Comment':'评论', 'Repost':'转发', 'SendMail':'发邮件', 'ReceiveMail':'收邮件',\
+                    'Logout':'退出登录', 'Operation':'操作', 'Download':'下载', 'Refresh':'刷新', 'Pay':'支付',\
+                    'ReceiveVideo':'接收视频', 'ReceivePicture':'接收图片', 'ReceiveFile':'接收文件', 'Post':'发帖', \
+                    'Report':'发布', 'ReceiveText':'收消息', 'DownloadFile':'下载文件', 'QunText':'群消息',\
+                    'OnlinePlay':'在线播放', 'Voip':'即时通话'}                      
+
 class SyslogHandler(SocketServer.BaseRequestHandler):
     '''
     Extract key field from syslog message and store in AppBehavior database
