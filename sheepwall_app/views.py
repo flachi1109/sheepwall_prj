@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -17,7 +19,7 @@ def comp_wifiuser_num(web_shown_num):
     '''
     return True if WifiUser.objects.count()>web_shown_num else False
 
-def get_alluser_lastest_log(requet):
+def get_alluser_lastest_log():
     '''
     Get all the online users and their latest behavior log
 
@@ -27,17 +29,16 @@ def get_alluser_lastest_log(requet):
     all_user_set = WifiUser.objects.all()
     result_set = {}
     for wifi_user in all_user_set:
-
-        result_list = []
-        wechat_to_ip = wifi_user.wechattolocalip_set.get()
-        result_list.append(wechat_to_ip)
         try:
-            result_list.append(AppBehaviorLog.objects.filter(src_ip_addr=wechat_to_ip.local_ip).latest())
+            result_set[wifi_user] = AppBehaviorLog.objects.filter(src_ip_addr=wifi_user.local_ip).latest()
         except ObjectDoesNotExist:
-            result_list.append('')
-        result_set[wifi_user] = result_list
+            result_set[wifi_user] = ''
+    return result_set
 
-    return render(requet, 'testurl.html', {'result_set':result_set})
+def render_index(request):
+
+    sheep_users = get_alluser_lastest_log()
+    return render(request, 'index.html', {'sheep_users':sheep_users})
 
 def get_latest5_behavior(wifiuser_id):
     '''
@@ -81,4 +82,19 @@ def get_latest5_behavior(wifiuser_id):
         if behavior_qs_item.target_url and behavior_qs_item.target_url is not 'None':
             behavior_with_value[BEHAVIOR_CONTENT_DES.Target_url] = behavior_qs_item.target_url
         
-        latest_behavior.append(behavior_with_value)        
+        latest_behavior.append(behavior_with_value)
+
+def get_page1_items():
+    sheep_users = WifiUser.objects.all()
+    sheep_users_list = []
+    for sheep_item in sheep_users:
+        sheep_item_dict = {}
+        sheep_item_dict['wechat_nickname'] = sheep_item.wechat_nickname
+        sheep_item_dict['wechat_head_img'] = sheep_item.wechat_head_img
+        sheep_item_dict['os_type'] = sheep_item.os_type
+        last_behavior_item = AppBehaviorLog.objects.filter(src_ip_addr=sheep_item.local_ip).last()
+        sheep_item_dict['application'] = last_behavior_item.application
+        sheep_item_dict['behavior'] = last_behavior_item.behavior
+        sheep_users_list.append(sheep_item_dict)
+    return sheep_users_list
+

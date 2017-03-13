@@ -107,3 +107,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(os.path.dirname(__file__), '../static/').replace('\\','/'),
 )
+
+#decode
+FILE_CHARSET = 'gb18030'
+DEFAULT_CHARSET = 'utf-8'

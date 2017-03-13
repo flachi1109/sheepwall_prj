@@ -4,17 +4,18 @@ from django.db import models
 class WifiUser(models.Model):
     wechat_nickname = models.CharField(max_length=40, null=True)
     wechat_head_img = models.FilePathField()
+    local_ip = models.GenericIPAddressField()
     mac_addr = models.CharField(max_length=20, null=True)
     os_type = models.CharField(max_length=10, null=True)
     phone_num = models.CharField(max_length=15, null=True)
 
-class WechatToLocalIP(models.Model):
-    local_ip = models.GenericIPAddressField()
-    wifi_user = models.ForeignKey(WifiUser, on_delete=models.CASCADE)
+# class WechatToLocalIP(models.Model):
+#     local_ip = models.GenericIPAddressField()
+#     wifi_user = models.ForeignKey(WifiUser, on_delete=models.CASCADE)
 
 # Record the online users' app behavior log
 class AppBehaviorLog(models.Model):
-    src_ip_addr = models.GenericIPAddressField()
+    src_ip_addr = models.GenericIPAddressField( )
     application = models.CharField(max_length=30, null=True)
     behavior = models.CharField(max_length=20, null=True)
     account = models.CharField(max_length=20, null=True)

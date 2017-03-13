@@ -21,6 +21,6 @@ from sheepwall_app import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.get_alluser_lastest_log),
+    url(r'^index/', views.render_index),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_URL}),
 ]
