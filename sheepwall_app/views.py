@@ -49,6 +49,10 @@ def get_latest5_behavior(wifiuser_id):
     wifiuser_item = WifiUser.objects.get(id=wifiuser_id)
     wechat_to_ip = wifiuser_item.wechattolocalip_set.get().local_ip
 
-    behavior_with_value = {}
     latest_behavior = []
-    AppBehaviorLog.object.get(src_ip_addr=wechat_to_ip).order_by('-access_time')[0:5]
+    latest_behavior_qs = AppBehaviorLog.object.get(src_ip_addr=wechat_to_ip).order_by('-access_time')[0:5]
+    for behavior_qs_item in latest_behavior_qs:
+        behavior_with_value = {}
+        behavior_with_value['IP'] = behavior_qs_item.src_ip_addr
+        behavior_with_value[''] = behavior_qs_item.application
+        behavior_with_value['behavior'] = behavior_qs_item.behavior

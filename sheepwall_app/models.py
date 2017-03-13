@@ -32,3 +32,9 @@ class AppBehaviorLog(models.Model):
     access_time = models.CharField(max_length=15, null=True)
     class Meta:
         get_latest_by = 'access_time'
+
+    #mobile os vulnerability
+    class mobile_os_vulns(models.Model):
+        os_type = models.CharField(max_length=10, null=True)
+        version_num = models.CharField(max_length=10, null=True)
+        vulns_detail = models.CharField(max_length=60, null=True)
