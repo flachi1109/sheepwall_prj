@@ -1,0 +1,406 @@
+/* General Demo Style */
+
+
+@font-face {
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body, html { font-size: 100%; padding: 0; margin: 0; }
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+
+body {
+	font-family: 'Lato',"weiruanyahei", Calibri, Arial, sans-serif;
+	color: #fff;
+	background: #e74c3c;
+}
+
+a {
+	color: #c0392b;
+	text-decoration: none;
+}
+
+a:hover,
+a:active {
+	color: #333;
+}
+
+/* Header Style */
+
+.container > header {
+	margin: 0 auto;
+	padding: 2em;
+}
+
+.container > header {
+	text-align: center;
+	background: #d94839;
+	padding: 3em;
+}
+
+.container > header h1 {
+	font-size: 2.625em;
+	line-height: 1.3;
+	margin: 0;
+	font-weight: 300;
+}
+
+.container > header span {
+	display: block;
+	font-size: 60%;
+	opacity: 0.7;
+	padding: 0 0 0.6em 0.1em;
+}
+
+/* Main Content */
+
+.column {
+	float: left;
+	width: 50%;
+	padding: 0 2em;
+	min-height: 300px;
+	position: relative;
+}
+
+.column:nth-child(2) {
+	box-shadow: -1px 0 0 rgba(0,0,0,0.1);
+}
+
+.column p {
+	font-weight: 300;
+	font-size: 2em;
+	padding: 0;
+	margin: 0;
+	text-align: right;
+	line-height: 1.5;
+}
+
+/* To Navigation Style */
+.codrops-top {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.2);
+	text-transform: uppercase;
+	width: 100%;
+	font-size: 0.69em;
+	line-height: 2.2;
+}
+
+.codrops-top a {
+	padding: 0 1em;
+	letter-spacing: 0.1em;
+	display: inline-block;
+}
+
+.codrops-top a:hover {
+	color: #e74c3c;
+	background: rgba(255,255,255,0.6);
+}
+
+.codrops-top span.right {
+	float: right;
+}
+
+.codrops-top span.right a {
+	float: left;
+	display: block;
+}
+
+.codrops-icon:before {
+	font-family: 'codropsicons';
+	margin: 0 4px;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.codrops-icon-drop:before {
+	content: "\e001";
+}
+
+.codrops-icon-prev:before {
+	content: "\e004";
+}
+
+
+
+
+
+@media screen and (max-width: 46.0625em) {
+	.column {
+		width: 100%;
+		min-width: auto;
+		min-height: auto;
+		padding: 1em; 
+	}
+
+	.column p {
+		text-align: left;
+		font-size: 1.5em;
+	}
+
+	.column:nth-child(2) {
+		box-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+	}
+}
+
+@media screen and (max-width: 25em) {
+
+	.codrops-icon span {
+		display: none;
+	}
+
+}
+
+
+/* General styles for the modal */
+
+/* 
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the 
+perspective effects (not including the modals and the overlay).
+*/
+.md-perspective,
+.md-perspective body {
+	height: 100%;
+	overflow: hidden;
+}
+
+.md-perspective body  {
+	background: #222;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+}
+
+.container {
+	background: #e74c3c;
+	min-height: 100%;
+}
+
+.md-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	max-width: 700px;
+	min-width: 400px;
+	height: auto;
+	z-index: 2000;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.md-show {
+	visibility: visible;
+}
+
+.md-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(0,0,0,0.8);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+
+	position: relative;
+
+}
+
+.md-content h3 {
+	margin: 0;
+	padding: 0.4em;
+	text-align: center;
+	font-size: 2.4em;
+	font-weight: 300;
+	opacity: 0.8;
+	background: rgba(0,0,0,0.1);
+	border-radius: 3px 3px 0 0;
+}
+
+.md-content > div {
+	padding: 15px 0;
+	margin: 0;
+}
+
+
+
+
+.md-content button {
+	display: block;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+/* Individual modal styles with animations/transitions */
+
+
+/* Effect 11: Super scaled */
+.md-effect-11 .md-content {
+	-webkit-transform: scale(2);
+	-moz-transform: scale(2);
+	-ms-transform: scale(2);
+	transform: scale(2);
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show.md-effect-11 .md-content {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+
+
+@media screen and (max-width: 32em) {
+	body { font-size: 75%; }
+}
+		
+
+	
+	.popup{width:80%;
+		color: #fff;
+	background: #e74c3c;
+	position: relative;
+	border-radius: 3px;
+	margin: 0 auto;}
+	.popup-title,.popup-behavior,.popup-timeline{
+		max-width:512px;
+	width:90%;
+	margin:0 auto;}
+
+	
+	.popup-title ul li {
+	line-height:40px;
+	float:left; 
+	list-style:none; 
+	margin-right:8%;}
+	
+	.popup-title ul{
+	overflow:hidden;
+	margin:0 auto;}
+	
+	.popup-title{
+	border-bottom:1px solid rgba(255,255,255,0.5);
+	margin-bottom:10px;
+	margin-top:20px;}
+	.timeline li p{
+	font-size:14px;}
+	.ic_events{
+	background-image:url(./assets/images/backgrounds/one.png);}
+	.timeline img{
+	height:53px;
+	width:20px;}
+	.timeline{
+	padding-top:10px;}
+	.popup-behavior{
+	margin-bottom:20px;}
+	.timeline span{
+	float:left;}
+	.list, .popup-behavior li, .popup-title li{
+	display: inline-block;
+	overflow:hidden;}
+	.list .txt{
+	border-bottom:1px solid rgba(255,255,255,0.5);
+	}
+	.list p{
+	padding-top:6px;}
+	.list-right{
+	margin-left:104px;}
+	.list-left p,.list-right p{
+	margin-right:6px;
+	text-align:right;}
+	.list-left {
+	margin-right:104px;}
+
+	.txt-box{
+	padding-top:8px;}
+
+	.right-add{
+	margin-left:114px;}
+	.left-add{
+	margin-left:3px;}
+	.left-add p{
+	text-align:right;
+	margin-right:6px;}
+	.popup-timeline .timeimg{
+	text-align:center;}
+	.popup-title{
+	text-align:center;}
+	.popup-title li,.popup-behavior li{
+	font-size:16px;}
+	.popup-img img{
+		width:80px;
+		height:80px;
+		margin:2px 6px;
+	float:left;}
+	.popup-img{
+		text-align:center;
+		width:100%;
+		margin-top:20px;
+	overflow:hidden;}
+	.popup-img span{
+
+
+		display:inline-block;
+	overflow:hidden;}
+	.timeline ul,.popup-title ul{
+		text-align:center;
+	}
+	.md-modal .headimg{
+	width:75px;
+	height:75px;
+	border-radius:60px;
+	}
+	.md-content .img,.md-modal .popup {
+		float:left;
+	}
+	.md-content{
+		overflow:hidden;
+	}
+
+	.md-content .img{
+	margin:20px 30px;
+	}
+	.popup-title li,.popup-behavior li{ color:#b7e9a4;}
+	.popup-title li span,.popup-behavior li span{ color:#ffffff;}
+	
