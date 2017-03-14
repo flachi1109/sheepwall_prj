@@ -9,9 +9,10 @@
                         <!-- 基本信息-->
                         <div class="popup-title" >
                             <ul>
+                                <li id="wechat_id" style="display:none">{{ current_user.wechat_nickname }}</li>>
                                 <li>微信昵称：<span>{{ current_user.wechat_nickname }}</span></li>
                                 <li>操作系统：<span>{{ current_user.os_type }}</span></li>
-                                <li style="margin-right:0;"><strong>IP地址:</strong><span>{{ current_user.local_ip }}</span></li>
+                                <li style="margin-right:0;"><strong>IP地址: </strong><span>{{ current_user.local_ip }}</span></li>
                             </ul>
                         </div>
                         <!-- 上网行为-->
@@ -32,7 +33,7 @@
                                     <li class="list list-right">
                                         <span><img src="../../static/assets/images/backgrounds/one.png"  alt="picture"/></span>
                                         <span class="txt-box">
-                                            <p class="txt">{{ latest5_behavior.0.0.access_date }} {{ latest5_behavior.0.0.access_access }}</p>
+                                            <p class="txt">{{ latest5_behavior.0.0.access_date }} {{ latest5_behavior.0.0.access_time }}</p>
                                             <p>访问 {{ latest5_behavior.0.0.application }}<br>
                                                 {% for key, value in latest5_behavior.0.1.iteritems %}
                                                 {{ key }} : {{ value }}<br>

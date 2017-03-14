@@ -6316,11 +6316,18 @@ function FilterRepeatingGradientForOutput(aValue, aEngine)
  * http://www.codrops.com
  */
 setInterval(function(){
+        var current_userid;
+        if ($('#wechat_id').val() != ''){
+            current_userid = $('#wechat_id').val();
+        } else{
+            current_userid = 1;
+        }
+
         $.ajax({
-            type: 'get',
+            type: 'post',
             url: '/popup',
             dateType: 'text',
-            data: {},
+            data: { 'next_userid': current_userid+1 },
             success: function(data){
                 if(data.length > 0){
                     $('#modal-11').html(data);

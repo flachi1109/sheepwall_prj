@@ -5,9 +5,6 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from models import *
 
-BEHAVIOR_CONTENT_DES = {'Version':'软件版本', 'Client':'操作系统', 'Account':'账号', 'Keyword':'关键字',\
-                       'Content':'内容', 'Sender_addr':'发件人', 'Receiver_addr':'收件人', 'Subject':'邮件主题',\
-                       'Body':'邮件正文', 'FileName':'文件名', 'FileSize':'文件大小'}
 # Create your views here.
 
 def comp_wifiuser_num(web_shown_num):
@@ -56,33 +53,37 @@ def get_latest5_behavior(wifiuser_id):
         behavior_with_value = {}
         behavior_with_value['行为'] = behavior_qs_item.behavior
         if behavior_qs_item.account and behavior_qs_item.account is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Account] = behavior_qs_item.account
+            behavior_with_value['帐号'] = behavior_qs_item.account
         if behavior_qs_item.content and behavior_qs_item.content is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Content] = behavior_qs_item.content
+            behavior_with_value['内容'] = behavior_qs_item.content
         if behavior_qs_item.keyword and behavior_qs_item.keyword is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Keyword] = behavior_qs_item.keyword
+            behavior_with_value['关键字'] = behavior_qs_item.keyword
         if behavior_qs_item.sender_addr and behavior_qs_item.sender_addr is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Sender_addr] = behavior_qs_item.sender_addr
+            behavior_with_value['发件人'] = behavior_qs_item.sender_addr
         if behavior_qs_item.receiver_addr and behavior_qs_item.receiver_addr is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Receiver_addr] = behavior_qs_item.receiver_addr
+            behavior_with_value['收件人'] = behavior_qs_item.receiver_addr
         if behavior_qs_item.subject and behavior_qs_item.subject is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Subject] = behavior_qs_item.subject
+            behavior_with_value['邮件主题'] = behavior_qs_item.subject
         if behavior_qs_item.body and behavior_qs_item.body is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Body] = behavior_qs_item.body
+            behavior_with_value['邮件正文'] = behavior_qs_item.body
         if behavior_qs_item.filename and behavior_qs_item.filename is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.FileName] = behavior_qs_item.filename
+            behavior_with_value['文件名称'] = behavior_qs_item.filename
         if behavior_qs_item.filesize and behavior_qs_item.filesize is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.FileSize] = behavior_qs_item.filesize
+            behavior_with_value['文件大小'] = behavior_qs_item.filesize
         if behavior_qs_item.softversion and behavior_qs_item.softversion is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Version] = behavior_qs_item.softversion 
+            behavior_with_value['软件版本'] = behavior_qs_item.softversion 
         if behavior_qs_item.target_url and behavior_qs_item.target_url is not 'None':
-            behavior_with_value['TargetURL'] = behavior_qs_item.target_url
+            behavior_with_value['目标网站'] = behavior_qs_item.target_url
         
         latest_behavior.append((behavior_qs_item,behavior_with_value))
 
-        return latest_behavior
+    return latest_behavior
 
 def render_popup(request):
-    latest5_behavior = get_latest5_behavior(1)
-    current_user = WifiUser.objects.get(id=1)
+    next_userid = int(request.POST.get('next_userid', ''))
+    if next_userid:
+        if next_userid > WifiUser.objects.last().id:
+            next_userid = 1
+        latest5_behavior = get_latest5_behavior(next_userid)
+        current_user = WifiUser.objects.get(id=next_userid)
     return render(request, 'popup-page.html', {'current_user':current_user, 'latest5_behavior':latest5_behavior})
