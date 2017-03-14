@@ -22,5 +22,6 @@ from sheepwall_app import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^index/', views.render_index),
+    url(r'^popup/', views.render_popup),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_URL}),
 ]

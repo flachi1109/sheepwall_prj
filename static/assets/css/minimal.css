@@ -1,4 +1,4 @@
-@import url(http://fonts.useso.com/css?family=Ubuntu+Mono|Roboto:400,100,300,500,700,300italic|Roboto+Condensed:300,400,700|Roboto+Slab:400,700&subset=latin,latin-ext);
+/*@import url(http://fonts.useso.com/css?family=Ubuntu+Mono|Roboto:400,100,300,500,700,300italic|Roboto+Condensed:300,400,700|Roboto+Slab:400,700&subset=latin,latin-ext);*/
 /*****************************************/
 /************* MAIN SETTINGS *************/
 /*****************************************/
@@ -9754,7 +9754,7 @@ body #content .inbox table {
   body #content .inbox table.table-custom > thead > tr > th,
   body #content .inbox table.table-custom > thead > tr > td {
     
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
     font-weight: 400;
     border-bottom: 0;
@@ -9934,7 +9934,7 @@ body #content .inbox table {
   body #content .tile table.table-custom > tbody > tr > td,
   body #content .inbox table.table-custom > tbody > tr > th,
   body #content .inbox table.table-custom > tbody > tr > td {
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 0;
     line-height: 22px;
     -webkit-font-smoothing: antialiased; }

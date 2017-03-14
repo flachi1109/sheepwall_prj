@@ -1,0 +1,105 @@
+<div class="md-content " >
+                <!-- 用户头像-->
+                <div class="img" >
+                    <img class="headimg" src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
+                </div>
+                <!-- 用户各种信息-->
+                <div class="popup bg">
+                    <div class="popup-box">
+                        <!-- 基本信息-->
+                        <div class="popup-title" >
+                            <ul>
+                                <li>微信昵称：<span>{{ current_user.wechat_nickname }}</span></li>
+                                <li>操作系统：<span>{{ current_user.os_type }}</span></li>
+                                <li style="margin-right:0;"><strong>IP地址:</strong><span>{{ current_user.local_ip }}</span></li>
+                            </ul>
+                        </div>
+                        <!-- 上网行为-->
+                        <div class="popup-behavior">
+                            <ul>
+                                <li>最近上网行为：
+                                    {% for latest_behavior in latest5_behavior %}
+                                    <span>{{ latest_behavior.0.application }}></span>
+                                    {% endfor %}
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 浏览时间轴-->
+                        <div class="popup-timeline">
+                            <div class="timeimg"><img src="../../static/assets/images/backgrounds/top.png"  alt="picture"/></div>
+                            <div class="timeline" style="width:90%;">
+                                <ul>
+                                    <li class="list list-right">
+                                        <span><img src="../../static/assets/images/backgrounds/one.png"  alt="picture"/></span>
+                                        <span class="txt-box">
+                                            <p class="txt">{{ latest5_behavior.0.0.access_date }} {{ latest5_behavior.0.0.access_access }}</p>
+                                            <p>访问 {{ latest5_behavior.0.0.application }}<br>
+                                                {% for key, value in latest5_behavior.0.1.iteritems %}
+                                                {{ key }} : {{ value }}<br>
+                                                {% endfor %}
+                                            </p>
+                                        </span>
+                                    </li>
+                                    <li class="list list-left">
+                                        <span class="txt-box">
+                                            <p class="txt">{{ latest5_behavior.1.0.access_date }} {{ latest5_behavior.1.0.access_access }}</p>
+                                            <p>访问 {{ latest5_behavior.1.0.application }}<br>
+                                                {% for key, value in latest5_behavior.1.1.iteritems %}
+                                                {{ key }} : {{ value }}<br>
+                                                {% endfor %}
+                                            </p>
+                                        </span>
+                                        <span><img src="../../static/assets/images/backgrounds/two.png"  alt="picture"/></span>
+                                    </li>
+                                    <li class="list list-right">
+                                        <span><img src="../../static/assets/images/backgrounds/three.png"  alt="picture"/></span>
+                                        <span class="txt-box">
+                                            <p class="txt">{{ latest5_behavior.2.0.access_date }} {{ latest5_behavior.2.0.access_access }}</p>
+                                            <p>访问 {{ latest5_behavior.2.0.application }}<br>
+                                                {% for key, value in latest5_behavior.2.1.iteritems %}
+                                                {{ key }} : {{ value }}<br>
+                                                {% endfor %}
+                                            </p>
+                                        </span>
+                                    </li>
+                                    <li class="list list-left">
+                                        <span class="txt-box">
+                                            <p class="txt">{{ latest5_behavior.3.0.access_date }} {{ latest5_behavior.3.0.access_access }}</p>
+                                            <p>访问 {{ latest5_behavior.3.0.application }}<br>
+                                                {% for key, value in latest5_behavior.3.1.iteritems %}
+                                                {{ key }} : {{ value }}<br>
+                                                {% endfor %}
+                                            </p>
+                                        </span>
+                                        <span><img src="../../static/assets/images/backgrounds/four.png"  alt="picture"/></span>
+                                    </li>
+                                    <li class="list list-right">
+                                        <span><img src="../../static/assets/images/backgrounds/five.png"  alt="picture"/></span>
+                                        <span class="txt-box">
+                                            <p class="txt">{{ latest5_behavior.4.0.access_date }} {{ latest5_behavior.4.0.access_access }}</p>
+                                            <p>访问 {{ latest5_behavior.4.0.application }}<br>
+                                                {% for key, value in latest5_behavior.4.1.iteritems %}
+                                                {{ key }} : {{ value }}<br>
+                                                {% endfor %}
+                                            </p>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 浏览时间轴 end-->
+                        <!-- 用户画像-->
+                        <div class="popup-img">
+                            <span>
+                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
+                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
+                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
+                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
+                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
+                            </span>
+                        </div>
+                        <!-- 用户画像 end-->
+                    </div>
+                </div>
+                <!-- 用户各种信息 end-->
+</div>

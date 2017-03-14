@@ -7,7 +7,7 @@ from models import *
 
 BEHAVIOR_CONTENT_DES = {'Version':'软件版本', 'Client':'操作系统', 'Account':'账号', 'Keyword':'关键字',\
                        'Content':'内容', 'Sender_addr':'发件人', 'Receiver_addr':'收件人', 'Subject':'邮件主题',\
-                       'Body':'邮件正文', 'FileName':'文件名', 'FileSize':'文件大小', 'Target_url':'访问站点'}
+                       'Body':'邮件正文', 'FileName':'文件名', 'FileSize':'文件大小'}
 # Create your views here.
 
 def comp_wifiuser_num(web_shown_num):
@@ -38,7 +38,7 @@ def get_alluser_lastest_log():
 def render_index(request):
 
     sheep_users = get_alluser_lastest_log()
-    return render(request, 'index.html', {'sheep_users':sheep_users})
+    return render(request, 'index1.html', {'sheep_users':sheep_users})
 
 def get_latest5_behavior(wifiuser_id):
     '''
@@ -48,17 +48,13 @@ def get_latest5_behavior(wifiuser_id):
     :return: The first five entries in the app behavior log. It is a List.
     '''
     wifiuser_item = WifiUser.objects.get(id=wifiuser_id)
-    wechat_to_ip = wifiuser_item.wechattolocalip_set.get().local_ip
+    wechat_to_ip = wifiuser_item.local_ip
 
     latest_behavior = []
-    latest_behavior_qs = AppBehaviorLog.object.get(src_ip_addr=wechat_to_ip).order_by('-access_time')[0:5]
+    latest_behavior_qs = AppBehaviorLog.objects.filter(src_ip_addr=wechat_to_ip).order_by('-access_time')[0:5]
     for behavior_qs_item in latest_behavior_qs:
         behavior_with_value = {}
-        behavior_with_value['IP地址'] = behavior_qs_item.src_ip_addr
-        behavior_with_value['应用名称'] = behavior_qs_item.application
         behavior_with_value['行为'] = behavior_qs_item.behavior
-        behavior_with_value['访问时间'] = behavior_qs_item.access_time
-        behavior_with_value['访问日期'] = behavior_qs_item.access_data
         if behavior_qs_item.account and behavior_qs_item.account is not 'None':
             behavior_with_value[BEHAVIOR_CONTENT_DES.Account] = behavior_qs_item.account
         if behavior_qs_item.content and behavior_qs_item.content is not 'None':
@@ -80,21 +76,13 @@ def get_latest5_behavior(wifiuser_id):
         if behavior_qs_item.softversion and behavior_qs_item.softversion is not 'None':
             behavior_with_value[BEHAVIOR_CONTENT_DES.Version] = behavior_qs_item.softversion 
         if behavior_qs_item.target_url and behavior_qs_item.target_url is not 'None':
-            behavior_with_value[BEHAVIOR_CONTENT_DES.Target_url] = behavior_qs_item.target_url
+            behavior_with_value['TargetURL'] = behavior_qs_item.target_url
         
-        latest_behavior.append(behavior_with_value)
+        latest_behavior.append((behavior_qs_item,behavior_with_value))
 
-def get_page1_items():
-    sheep_users = WifiUser.objects.all()
-    sheep_users_list = []
-    for sheep_item in sheep_users:
-        sheep_item_dict = {}
-        sheep_item_dict['wechat_nickname'] = sheep_item.wechat_nickname
-        sheep_item_dict['wechat_head_img'] = sheep_item.wechat_head_img
-        sheep_item_dict['os_type'] = sheep_item.os_type
-        last_behavior_item = AppBehaviorLog.objects.filter(src_ip_addr=sheep_item.local_ip).last()
-        sheep_item_dict['application'] = last_behavior_item.application
-        sheep_item_dict['behavior'] = last_behavior_item.behavior
-        sheep_users_list.append(sheep_item_dict)
-    return sheep_users_list
+        return latest_behavior
 
+def render_popup(request):
+    latest5_behavior = get_latest5_behavior(1)
+    current_user = WifiUser.objects.get(id=1)
+    return render(request, 'popup-page.html', {'current_user':current_user, 'latest5_behavior':latest5_behavior})
