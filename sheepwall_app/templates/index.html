@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
  
 <html>
   <head>
-    <title>ÃàÑòÇ½</title>
+    <title>ç»µç¾Šå¢™</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">  
     <meta charset="UTF-8" />
@@ -13,7 +13,7 @@
     <link href="../../static/assets/css/minimal.css" rel="stylesheet">
     <link rel="stylesheet" href="../../static/assets/css/style.css" media="screen" type="text/css" />
 <style>
-    body div{font-family:"Î¢ÈíÑÅºÚ";}
+    body div{font-family:"å¾®è½¯é›…é»‘";}
     .bg {
     background-image: url(../../static/assets/images/backgrounds/2.jpg);
     background-repeat: repeat, no-repeat;
@@ -21,110 +21,127 @@
     background-size: auto, cover; }
 </style>
   </head>
-  <body class="bg-1">            
+  <body class="bg-1">
         <div id="content" class="col-md-12">
           <div class="main">
           <!-- row -->
             <div class="row">
              <!-- col 12 -->
-              <div class="col-md-12"> 
-                <!-- ÁĞ±í -->              
+              <div class="col-md-12">
+                <!-- åˆ—è¡¨ -->
                 <section class="tile transparent tile-height" style="height:65%;">
-                  <!-- ±êÌâ -->
+                  <!-- æ ‡é¢˜ -->
                   <div class="tile-header transparent">
-                    <h1 style="font-family:Î¢ÈíÑÅºÚ">ÒÆ¶¯ÖÕ¶ËĞÅÏ¢Õ¹Ê¾</h1>
+                    <h1 style="font-family:å¾®è½¯é›…é»‘">ç§»åŠ¨ç»ˆç«¯ä¿¡æ¯å±•ç¤º</h1>
                   </div>
-                  <!-- ÁĞ±í-±íÍ· -->    
-                  <div class="tile-body color transparent-white padding">                   
+                  <!-- åˆ—è¡¨-è¡¨å¤´ -->
+                  <div class="tile-body color transparent-white padding">
                     <div class="table-responsive">
                         <table  class="table table-datatable table-custom" id="inlineEditDataTable ">
                             <thead>
                                 <tr class="odd gradeA">
-                                    <td class="sort-alpha sort-alpha-width">ÓÃ»§Í·Ïñ</td>
-                                    <td class="sort-alpha sort-alpha-two">ÓÃ»§êÇ³Æ</td>
-                                    <td class="sort-amount sort-amount-width">²Ù×÷ÏµÍ³</td>
-                                    <td class="sort-numeric">µ±Ç°ĞĞÎª</td>
+                                    <td class="sort-alpha sort-alpha-width">ç”¨æˆ·å¤´åƒ</td>
+                                    <td class="sort-alpha sort-alpha-two">ç”¨æˆ·æ˜µç§°</td>
+                                    <td class="sort-amount sort-amount-width">æ“ä½œç³»ç»Ÿ</td>
+                                    <td class="sort-numeric">å½“å‰æ“ä½œ</td>
                                 </tr>
                             </thead>
                         </table >
                     </div>
                   </div>
-                   <!-- ÁĞ±í-±íµ¥ -->
-                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:74%;">                    
-                    <div id="demo1" class="table-responsive;">
-                      <table  class="table table-datatable table-custom" id="inlineEditDataTable">
+                   <!-- åˆ—è¡¨-è¡¨å• -->
+                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:74%;">
+                      <table  class="table table-datatable table-custom" id="inlineEditDataTable" style="border-collapse:collapse; ">
                           {% for wifiuser, behavior in sheep_users.iteritems %}
                               <tr class="odd gradeA" >
                                 <td class="img-size" ><img src="../../static/assets/images/erweima.png"  alt="picture" /></td>
                                 <td class="sort-alpha-two">{{ wifiuser.wechat_nickname }}</td>
                                 <td class="sort-amount-width">{{ wifiuser.os_type }}</td>
                                 {% if behavior.application %}
-                                    <td> ÕıÔÚÊ¹ÓÃ {{ behavior.application }}£¬½øĞĞ{{ behavior.behavior }}</td>
+                                    <td> æ­£åœ¨ä½¿ç”¨ <span style="color:#35ff8f;">{{ behavior.application }}ï¼Œ</span>è¿›è¡Œ <span style="color:#35ff8f;">{{ behavior.behavior }}</span></td>
                                 {% else %}
-                                    <td> ÔİÎŞ²Ù×÷ </td>
+                                    <td> æš‚æ— æ“ä½œ </td>
                                 {% endif %}
                               </tr>
                           {% endfor %}
+
                       </table>
-                    </div>                    
-                    <div id="demo2"></div>  
+
+
                   </div>
                 </section>
-                <!-- ÁĞ±íend -->
-                <!-- ¶şÎ¬Âëbox -->                
+                <!-- åˆ—è¡¨end -->
+                <!-- äºŒç»´ç box -->
                 <section class="tile color transparent-black transparent-black-add">
                   <div class="tile-body tile-height-one" >
-                    <button class="md-trigger" data-modal="modal-11" style="border:0; padding:0;"></button> 
-                    <!-- ¶şÎ¬Âë-->    
+                    <button class="md-trigger" data-modal="modal-11" style="border:0; padding:0;"></button>
+                    <!-- äºŒç»´ç -->
                     <div class="morris-chart morris-chart-height" >
-                         <span style=" text-align:center; display:block;">É¨Âë¹Ø×¢ÎÒÃÇ</span>
+                         <span style=" text-align:center; display:block;">æ‰«ç å…³æ³¨æˆ‘ä»¬</span>
                          <img src="../../static/assets/images/erweima1.png"  alt="picture" style="background-color:#ffffff;" style=" height:auto;min-width:100%;" />
                     </div>
                   </div>
-                  <!-- /tile body --> 
+                  <!-- /tile body -->
                 </section>
-                <!-- ¶şÎ¬Âëbox end -->    
+                <!-- äºŒç»´ç box end -->
               </div>
-              <!-- /col 12 -->              
+              <!-- /col 12 -->
             </div>
             <!-- /row -->
           </div>
         </div>
-        
-        
-        <!-- µ¯³öÒ³Ãæ -->
-        <div class="md-modal md-effect-11 " id="modal-11">            
 
-        </div>        
+
+        <!-- å¼¹å‡ºé¡µé¢ -->
+        <div class="md-modal md-effect-11 " id="modal-11">
+
+        </div>
         <div class="md-overlay"></div><!-- the overlay element -->
-        <!-- µ¯³öÒ³Ãæ end -->
-        
+        <!-- å¼¹å‡ºé¡µé¢ end -->
+
         <script>
             // this is important for IEs
             var polyfilter_scriptpath = '/js/';
         </script>
         <script src="../../static/assets/js/jquery.js" charset="UTF-8"></script>
         <script src="../../static/assets/js/index.js" charset="UTF-8"></script>
-
-        <!-- ĞÅÏ¢¹ö¶¯js -->
-        <script type="text/javascript">  
-        var speed = 80;  // ¹ö¶¯ĞÅÏ¢ËÙ¶È
-        demo2.innerHTML = demo1.innerHTML;  
-        function Marquee() {  
-            if (demo2.offsetTop - demo.scrollTop <= 0) {  
-                demo.scrollTop -= demo1.offsetHeight;  
-            } else {  
-                demo.scrollTop++;  
-            }  
-        }  
-        var MyMar = setInterval(Marquee, speed);   
-        demo.onmouseover = function() {  
-            clearInterval(MyMar);  
-        }   
-        demo.onmouseout = function() {  
-            MyMar = setInterval(Marquee, speed);  
-        }  
-        </script>  
+        
+        <!-- ä¿¡æ¯æ»šåŠ¨js -->
+        <script>   
+        function marques(lh,speed,delay){    
+            var intervalFunction;    
+            var oHeight = 210; /** divçš„é«˜åº¦ **/  
+            var scrollDiv=document.getElementById("demo");    
+            var preTop = 0;   
+            scrollDiv.scrollTop = 0;   
+        //var p=false;   
+         
+            function start(){    
+                intervalFunction=setInterval(scrolling,speed);       
+            };    
+        
+            function scrolling(){  
+                if( scrollDiv.scrollHeight-scrollDiv.offsetHeight<scrollDiv.scrollTop){   
+                    preTop = scrollDiv.scrollTop;   
+                    scrollDiv.scrollTop+=1;   
+                    if(preTop >= scrollDiv.scrollHeight || preTop==scrollDiv.scrollTop){   
+                        scrollDiv.scrollTop = 0;   
+                    }   
+                }else{   
+                //clearInterval(intervalFunction);    æ¸…é™¤å®šæ—¶å™¨
+                //setTimeout(start,delay);    //ç»§ç»­å®šæ—¶å™¨
+                }  
+                scrollDiv.scrollTop+=1; 
+                
+                scrollDiv.onmouseover=function() {clearInterval(intervalFunction)}; 
+                scrollDiv.onmouseout=function() {intervalFunction=setInterval(scrolling,speed)};  
+            };
+            
+            setTimeout(start,delay);    
+        };
+        marques(40,150,500);    
+    /**marquees(ä¸€æ¬¡æ»šåŠ¨é«˜åº¦,é€Ÿåº¦,åœç•™æ—¶é—´);**/    
+</script> 
   </body>  
 </html>
       

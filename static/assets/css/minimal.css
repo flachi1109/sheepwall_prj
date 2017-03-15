@@ -12561,7 +12561,7 @@ body #content.full-page.error .search {
 		color:#50e9ff;
 	}
 	.badge-outline li{display:block;float:left;}
-	.tile-header{font-family:"微软雅黑";}
+	.tile-header{font-family:"微软雅黑"; margin-top:30px;}
 	.tile-body-padding  div{ height: 200px;}
 	ul{
 	padding:0;

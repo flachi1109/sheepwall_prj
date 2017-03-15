@@ -6317,15 +6317,15 @@ function FilterRepeatingGradientForOutput(aValue, aEngine)
  */
 setInterval(function(){
         var current_userid;
-        if ($('#wechat_id').val() != ''){
-            current_userid = $('#wechat_id').val();
+        if ($('#wechat_id').text() != ''){
+            current_userid = parseInt($('#wechat_id').text());
         } else{
-            current_userid = 1;
+            current_userid = 0;
         }
 
         $.ajax({
             type: 'post',
-            url: '/popup',
+            url: '/popup/',
             dateType: 'text',
             data: { 'next_userid': current_userid+1 },
             success: function(data){
@@ -6334,7 +6334,22 @@ setInterval(function(){
                 }
             }
         });
-    }, 5000);
+    }, 15000);
+//update wifi user table
+setInterval(function(){
+    $.ajax({
+        type: 'get',
+        url: '/updatewifiusers/',
+        dateType: 'text',
+        data: { },
+        success: function(data){
+            if(data.length > 0){
+                    $('#inlineEditDataTable').html(data);
+            }
+        }
+     });
+}, 3000);
+
 var ModalEffects = (function() {
 
     function init() {
@@ -6398,5 +6413,4 @@ var ModalEffects = (function() {
     init();
 
 })();
-
 

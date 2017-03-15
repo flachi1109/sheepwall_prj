@@ -9,7 +9,7 @@
                         <!-- 基本信息-->
                         <div class="popup-title" >
                             <ul>
-                                <li id="wechat_id" style="display:none">{{ current_user.wechat_nickname }}</li>>
+                                <li id="wechat_id" style="display:none">{{ current_user.id }}</li>
                                 <li>微信昵称：<span>{{ current_user.wechat_nickname }}</span></li>
                                 <li>操作系统：<span>{{ current_user.os_type }}</span></li>
                                 <li style="margin-right:0;"><strong>IP地址: </strong><span>{{ current_user.local_ip }}</span></li>
@@ -20,7 +20,7 @@
                             <ul>
                                 <li>最近上网行为：
                                     {% for latest_behavior in latest5_behavior %}
-                                    <span>{{ latest_behavior.0.application }}></span>
+                                    <span>{{ latest_behavior.0.application }}<span style="color:#999999;">>></span></span>
                                     {% endfor %}
                                 </li>
                             </ul>
@@ -33,7 +33,7 @@
                                     <li class="list list-right">
                                         <span><img src="../../static/assets/images/backgrounds/one.png"  alt="picture"/></span>
                                         <span class="txt-box">
-                                            <p class="txt">{{ latest5_behavior.0.0.access_date }} {{ latest5_behavior.0.0.access_time }}</p>
+                                            <p class="txt">{{ latest5_behavior.0.0.access_date|date:'Y-m-d' }} {{ latest5_behavior.0.0.access_time }}</p>
                                             <p>访问 {{ latest5_behavior.0.0.application }}<br>
                                                 {% for key, value in latest5_behavior.0.1.iteritems %}
                                                 {{ key }} : {{ value }}<br>
@@ -43,7 +43,7 @@
                                     </li>
                                     <li class="list list-left">
                                         <span class="txt-box">
-                                            <p class="txt">{{ latest5_behavior.1.0.access_date }} {{ latest5_behavior.1.0.access_access }}</p>
+                                            <p class="txt">{{ latest5_behavior.1.0.access_date|date:'Y-m-d' }} {{ latest5_behavior.1.0.access_time }}</p>
                                             <p>访问 {{ latest5_behavior.1.0.application }}<br>
                                                 {% for key, value in latest5_behavior.1.1.iteritems %}
                                                 {{ key }} : {{ value }}<br>
@@ -55,7 +55,7 @@
                                     <li class="list list-right">
                                         <span><img src="../../static/assets/images/backgrounds/three.png"  alt="picture"/></span>
                                         <span class="txt-box">
-                                            <p class="txt">{{ latest5_behavior.2.0.access_date }} {{ latest5_behavior.2.0.access_access }}</p>
+                                            <p class="txt">{{ latest5_behavior.2.0.access_date|date:'Y-m-d' }} {{ latest5_behavior.2.0.access_time }}</p>
                                             <p>访问 {{ latest5_behavior.2.0.application }}<br>
                                                 {% for key, value in latest5_behavior.2.1.iteritems %}
                                                 {{ key }} : {{ value }}<br>
@@ -65,7 +65,7 @@
                                     </li>
                                     <li class="list list-left">
                                         <span class="txt-box">
-                                            <p class="txt">{{ latest5_behavior.3.0.access_date }} {{ latest5_behavior.3.0.access_access }}</p>
+                                            <p class="txt">{{ latest5_behavior.3.0.access_date|date:'Y-m-d' }} {{ latest5_behavior.3.0.access_time }}</p>
                                             <p>访问 {{ latest5_behavior.3.0.application }}<br>
                                                 {% for key, value in latest5_behavior.3.1.iteritems %}
                                                 {{ key }} : {{ value }}<br>
@@ -77,7 +77,7 @@
                                     <li class="list list-right">
                                         <span><img src="../../static/assets/images/backgrounds/five.png"  alt="picture"/></span>
                                         <span class="txt-box">
-                                            <p class="txt">{{ latest5_behavior.4.0.access_date }} {{ latest5_behavior.4.0.access_access }}</p>
+                                            <p class="txt">{{ latest5_behavior.4.0.access_date|date:'Y-m-d' }} {{ latest5_behavior.4.0.access_time }}</p>
                                             <p>访问 {{ latest5_behavior.4.0.application }}<br>
                                                 {% for key, value in latest5_behavior.4.1.iteritems %}
                                                 {{ key }} : {{ value }}<br>

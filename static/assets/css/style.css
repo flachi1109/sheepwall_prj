@@ -297,7 +297,7 @@ perspective effects (not including the modals and the overlay).
 		
 
 	
-	.popup{width:80%;
+	.popup{width:75%;
 		color: #fff;
 	background: #e74c3c;
 	position: relative;
@@ -345,12 +345,15 @@ perspective effects (not including the modals and the overlay).
 	.list p{
 	padding-top:6px;}
 	.list-right{
-	margin-left:104px;}
-	.list-left p,.list-right p{
+	margin-left:184px;}
+	.list-left p{
 	margin-right:6px;
 	text-align:right;}
+	.list-right p{
+	margin-left:6px;
+	text-align:left;}
 	.list-left {
-	margin-right:104px;}
+	margin-right:186px;}
 
 	.txt-box{
 	padding-top:8px;}
@@ -399,8 +402,9 @@ perspective effects (not including the modals and the overlay).
 	}
 
 	.md-content .img{
-	margin:20px 30px;
+	margin:20px 20px 10px 20px;
 	}
 	.popup-title li,.popup-behavior li{ color:#b7e9a4;}
 	.popup-title li span,.popup-behavior li span{ color:#ffffff;}
-	
+	.list-right p,.list-left p{ width:190px; min-height::32px;}
+	.txt-box .txt{ min-height:32px; line-height:22px; padding-bottom:2px;}
