@@ -410,8 +410,8 @@ perspective effects (not including the modals and the overlay).
     .popup-timeline{ position:relative; z-index:100;}
     .timeline{ width:90%; position:relative; overflow:hidden;}
     .list-circle-one{ background:url("../images/backgrounds/one.png") no-repeat 0 12px;}
-    .list-circle-two{ background:url("../images/backgrounds/one.png") no-repeat 190px 12px;}
-    .list-circle-three{ background:url("../images/backgrounds/one.png") no-repeat 0 12px;}
-    .list-circle-four{ background:url("../images/backgrounds/one.png") no-repeat 190px 12px;}
-    .list-circle-five{ background:url("../images/backgrounds/one.png") no-repeat 0 12px;}
+    .list-circle-two{ background:url("../images/backgrounds/two.png") no-repeat 190px 12px;}
+    .list-circle-three{ background:url("../images/backgrounds/three.png") no-repeat 0 12px;}
+    .list-circle-four{ background:url("../images/backgrounds/four.png") no-repeat 190px 12px;}
+    .list-circle-five{ background:url("../images/backgrounds/six.png") no-repeat 0 12px;}
     .md-content .txt-box p a{ color:#ffa632; font-family:"Microsoft Yahei";}
