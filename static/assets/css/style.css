@@ -28,6 +28,7 @@ body {
 a {
 	color: #c0392b;
 	text-decoration: none;
+	font-family:"Microsoft Yahei";
 }
 
 a:hover,
@@ -338,26 +339,22 @@ perspective effects (not including the modals and the overlay).
 	float:left;}
 	.list, .popup-behavior li, .popup-title li{
 	display: inline-block;
-	overflow:hidden;}
+	}
 	.list .txt{
-	border-bottom:1px solid rgba(255,255,255,0.5);
+	border-bottom:1px solid rgba(255,255,255,0.2);
 	}
 	.list p{
 	padding-top:6px;}
 	.list-right{
 	margin-left:184px;}
 	.list-left p{
-	margin-right:6px;
+	margin-right:28px;
 	text-align:right;}
 	.list-right p{
-	margin-left:6px;
+	margin-left:28px;
 	text-align:left;}
 	.list-left {
 	margin-right:186px;}
-
-	.txt-box{
-	padding-top:8px;}
-
 	.right-add{
 	margin-left:114px;}
 	.left-add{
@@ -365,7 +362,7 @@ perspective effects (not including the modals and the overlay).
 	.left-add p{
 	text-align:right;
 	margin-right:6px;}
-	.popup-timeline .timeimg{
+	.timeimg{
 	text-align:center;}
 	.popup-title{
 	text-align:center;}
@@ -382,8 +379,6 @@ perspective effects (not including the modals and the overlay).
 		margin-top:20px;
 	overflow:hidden;}
 	.popup-img span{
-
-
 		display:inline-block;
 	overflow:hidden;}
 	.timeline ul,.popup-title ul{
@@ -400,11 +395,23 @@ perspective effects (not including the modals and the overlay).
 	.md-content{
 		overflow:hidden;
 	}
-
 	.md-content .img{
 	margin:20px 20px 10px 20px;
 	}
 	.popup-title li,.popup-behavior li{ color:#b7e9a4;}
 	.popup-title li span,.popup-behavior li span{ color:#ffffff;}
 	.list-right p,.list-left p{ width:190px; min-height::32px;}
-	.txt-box .txt{ min-height:32px; line-height:22px; padding-bottom:2px;}
+	.txt-box .txt{padding-bottom:4px;}
+
+	.popup-box{ background: url("../images/backgrounds/five.png") repeat-y 261px 0;}
+    .list:after{content:"."; display:block; height: 0; clear:both; visibility:hidden; }
+    .list-right{ margin-left:190px;}
+    .list-left{ margin-right:190px;}
+    .popup-timeline{ position:relative; z-index:100;}
+    .timeline{ width:90%; position:relative; overflow:hidden;}
+    .list-circle-one{ background:url("../images/backgrounds/one.png") no-repeat 0 12px;}
+    .list-circle-two{ background:url("../images/backgrounds/one.png") no-repeat 190px 12px;}
+    .list-circle-three{ background:url("../images/backgrounds/one.png") no-repeat 0 12px;}
+    .list-circle-four{ background:url("../images/backgrounds/one.png") no-repeat 190px 12px;}
+    .list-circle-five{ background:url("../images/backgrounds/one.png") no-repeat 0 12px;}
+    .md-content .txt-box p a{ color:#ffa632; font-family:"Microsoft Yahei";}
