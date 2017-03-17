@@ -89,6 +89,8 @@ def get_latest5_behavior(wifiuser_id):
             behavior_with_value['软件版本'] = behavior_qs_item.softversion 
         if behavior_qs_item.target_url and behavior_qs_item.target_url != 'None':
             behavior_with_value['目标网站'] = behavior_qs_item.target_url
+        if behavior_qs_item.client and behavior_qs_item.client != 'None':
+            behavior_with_value['客户端'] = behavior_qs_item.client
         
         latest_behavior.append((behavior_qs_item,behavior_with_value))
 

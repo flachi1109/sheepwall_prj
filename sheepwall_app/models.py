@@ -7,11 +7,7 @@ class WifiUser(models.Model):
     local_ip = models.GenericIPAddressField()
     mac_addr = models.CharField(max_length=20, null=True)
     os_type = models.CharField(max_length=10, null=True)
-    phone_num = models.CharField(max_length=15, null=True)
 
-# class WechatToLocalIP(models.Model):
-#     local_ip = models.GenericIPAddressField()
-#     wifi_user = models.ForeignKey(WifiUser, on_delete=models.CASCADE)
 
 # Record the online users' app behavior log
 class AppBehaviorLog(models.Model):
@@ -27,6 +23,7 @@ class AppBehaviorLog(models.Model):
     body = models.CharField(max_length=60, null=True)
     filename = models.CharField(max_length=40, null=True)
     filesize = models.CharField(max_length=40, null=True)
+    client = models.CharField(max_length=10, null=True)
     softversion = models.CharField(max_length=40, null=True)
     target_url = models.URLField()
     access_date = models.DateField(auto_now=True)

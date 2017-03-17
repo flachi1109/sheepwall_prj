@@ -2,10 +2,15 @@
 <tr class="odd gradeA" >
     <td class="img-size" ><img src="../../static/assets/images/erweima.png"  alt="picture" /></td>
     <td class="sort-alpha-two">{{ wifiuser.wechat_nickname }}</td>
-    <td class="sort-amount-width">{{ wifiuser.os_type }}</td>
     {% if behavior.application %}
+        {% ifequal behavior.client '' %}
+        <td class="sort-amount-width">Unknown</td>
+        {% else %}
+        <td class="sort-amount-width">{{ behavior.client }}</td>
+        {% endifequal %}
         <td> 正在使用 <span style="color:#35ff8f;">{{ behavior.application }}，</span>进行 <span style="color:#35ff8f;">{{ behavior.behavior }}</span></td>
     {% else %}
+        <td class="sort-amount-width">Unknown</td>
         <td> 暂无操作 </td>
     {% endif %}
 </tr>
