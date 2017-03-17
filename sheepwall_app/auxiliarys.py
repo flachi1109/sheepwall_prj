@@ -30,7 +30,7 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
             if syslog_type_msg.find('AUDIT') > -1:  # Find whether there is keyword 'AUDIT' in the syslog
 
                 behavior_log_dict = {}
-                behavior_log_dict['access_time'] = syslog_type_msg.split(' ')[3]  # Save access_time to the dict
+                behavior_log_dict['access_time'] = syslog_type_msg.split(' ')[2]  # Save access_time to the dict
 
                 pattern = re.compile(r'SrcIPAddr\(1003\)=(?P<src_ip_addr>[0-9|\.]+);.+Application\(1002\)=(?P<application>\w+);'
                                      r'Behavior\(1101\)=(?P<behavior>\w+);BehaviorContent\(1102\)={(Sender_addr\(1106\)'
