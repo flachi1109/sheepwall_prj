@@ -53,7 +53,8 @@ def render_wifiuser_table(request):
     return render(request, 'wifiuser_table.html', {'sheep_users': sheep_users})
 
 def render_vulner_table(request):
-    return render(request, 'datatables.html')
+    sheep_users = WifiUser.objects.all()
+    return render(request, 'datatables.html', {'sheep_users': sheep_users})
 
 def get_latest5_behavior(wifiuser_id):
     '''
