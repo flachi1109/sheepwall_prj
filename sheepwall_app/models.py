@@ -3,7 +3,7 @@ from django.db import models
 # The wechat users who access the wifi network
 class WifiUser(models.Model):
     wechat_nickname = models.CharField(max_length=40, null=True)
-    wechat_head_img = models.FilePathField()
+    wechat_head_img = models.CharField(max_length=200, null=True)
     local_ip = models.GenericIPAddressField()
     mac_addr = models.CharField(max_length=20, null=True)
     os_type = models.CharField(max_length=10, null=True)
