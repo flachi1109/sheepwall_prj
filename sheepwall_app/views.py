@@ -52,6 +52,9 @@ def render_wifiuser_table(request):
     sheep_users = get_alluser_lastest_log()
     return render(request, 'wifiuser_table.html', {'sheep_users': sheep_users})
 
+def render_vulner_table(request):
+    return render(request, 'datatables.html')
+
 def get_latest5_behavior(wifiuser_id):
     '''
     Get the users' last five logs;
