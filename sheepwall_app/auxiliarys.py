@@ -84,5 +84,5 @@ def start_syslog_server(host, port):
     syslog_server.serve_forever()
 
 if __name__ == '__main__':
-    host, port = "localhost", 9999
+    host, port = "0.0.0.0", 9999
     start_syslog_server(host, port)
