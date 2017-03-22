@@ -10,7 +10,16 @@ BEHAVIOR_TYPE_DES = {'Login':'登录', 'SendText':'发消息', 'SendVideo':'发�
                     'Logout':'退出登录', 'Operation':'操作', 'Download':'下载', 'Refresh':'刷新', 'Pay':'支付',\
                     'ReceiveVideo':'接收视频', 'ReceivePicture':'接收图片', 'ReceiveFile':'接收文件', 'Post':'发帖', \
                     'Report':'发布', 'ReceiveText':'收消息', 'DownloadFile':'下载文件', 'QunText':'群消息',\
-                    'OnlinePlay':'在线播放', 'Voip':'即时通话'}                      
+                    'OnlinePlay':'在线播放', 'Voip':'即时通话'} 
+APP_CN_NAME	= {'QQ':'QQ', 'WeChat':'微信', 'ALiWangWang':'阿里旺旺', 'BaiduTieBa':'百度贴吧', 'SinaWeiBo':'新浪微博', 
+               'Search_Bing':'Bing搜索网页版', 'Search_JDMall':'京东搜索', 'Search_360':'360搜索', 'Search_Sougou':'搜狗搜索', 
+			   'ChinaSo':'中国搜索', 'TencentWeiBo':'腾讯微博', '126WebEmail':'126邮箱', '163Email':'163邮箱', 'SinaMail':'新浪邮箱',
+			   'QQMail':'QQ邮箱', 'iQiYiPPS':'爱奇艺', 'Letv':'乐视视频', 'TencentVideo':'腾讯视频', 'YouKu':'优酷', 'BaiduCloud':'百度云',
+			   'QQXuanFeng':'QQ旋风', 'TianYaBBS':'天涯社区', 'PandaTV':'熊猫TV', 'DouYuTV':'斗鱼TV', 'Inke':'映客直播', 'SohuCommunity':'搜狐社区',
+			   'MopBBS':'猫扑论坛', 'TieXueMil':'铁血军事', 'SinaForum':'新浪论坛', 'BTHome':'BT之家', 'XinHuaWangForum':'新华网论坛', 
+			   'IfengBBS':'凤凰论坛', '21CNEmail':'21CN邮箱', '139Mail':'139邮箱', 'YingYongBao':'应用宝', '189Email':'189邮箱', 
+			   'WoEmail':'沃邮箱', 'XinLangWeiPan':'新浪微盘', 'Qzone':'QQ空间', 'YYPhone':'YY语音', 'SinaUC':'新浪UC', '17173':'17173游戏社区', 
+			   'XiCiHuTong':'西祠胡同', 'RenRenDesktop':'人人桌面', 'RenRen':'人人', 'TianYiBBS':'天一论坛', 'CCTV':'央视网'}				
 
 class SyslogHandler(SocketServer.BaseRequestHandler):
     '''
@@ -42,7 +51,7 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
                 behavior_log = pattern.search(res.group('behavior'))
 
                 behavior_log_dict['src_ip_addr'] = behavior_log.group('src_ip_addr')
-                behavior_log_dict['application'] = behavior_log.group('application')
+                behavior_log_dict['application'] = APP_CN_NAME[behavior_log.group('application')]
                 behavior_log_dict['behavior'] = BEHAVIOR_TYPE_DES[behavior_log.group('behavior')]
                 behavior_log_dict['sender_addr'] = behavior_log.group('sender_addr')
                 behavior_log_dict['receiver_addr'] = behavior_log.group('receiver_addr')
