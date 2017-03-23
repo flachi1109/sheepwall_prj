@@ -1,7 +1,0 @@
-#!/bin/bash
-
-for (( i=1; i<21; i++))
-do 
- mv /tmp/img/$i.JPG /root/sheepwall_prj/static/assets/images/wifiuserimgs/172.16.0.$i/headimg/headimg.jpg
-done
-   

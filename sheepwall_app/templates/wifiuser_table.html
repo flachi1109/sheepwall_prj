@@ -1,6 +1,6 @@
 {% for wifiuser, behavior in sheep_users.iteritems %}
 <tr class="odd gradeA" >
-    <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/{{ wifiuser.local_ip }}/headimg/headimg.jpg"  alt="picture" /></td>
+    <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ wifiuser.local_ip }}.jpg"  alt="picture" /></td>
     <td class="sort-alpha-two">{{ wifiuser.wechat_nickname }}</td>
     {% if behavior.application %}
         {% ifequal behavior.client '' %}
