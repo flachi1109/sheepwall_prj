@@ -18,7 +18,7 @@
     background-image: url(../../static/assets/images/backgrounds/2.jpg);
     background-repeat: repeat, no-repeat;
     background-position: left top;
-    background-size: auto, cover; }
+    background-size: cover, auto; }
 </style>
   </head>
   <body class="bg-1">
@@ -29,7 +29,7 @@
              <!-- col 12 -->
               <div class="col-md-12">
                 <!-- 列表 -->
-                <section class="tile transparent tile-height" style="height:65%;">
+                <section class="tile transparent tile-height" style="height:70%;margin-bottom:15px;">
                   <!-- 标题 -->
                   <div class="tile-header transparent">
                     <h1 style="font-family:微软雅黑">移动终端信息展示</h1>
@@ -50,7 +50,7 @@
                     </div>
                   </div>
                    <!-- 列表-表单 -->
-                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:74%;">
+                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:85%;">
                       <table  class="table table-datatable table-custom" id="inlineEditDataTable" style="border-collapse:collapse; ">
                           {% for wifiuser, behavior in sheep_users.iteritems %}
                               <tr class="odd gradeA" >

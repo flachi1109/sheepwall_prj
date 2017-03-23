@@ -75,17 +75,7 @@
                                         </span>
 
                                     </li>
-                                    <li class="list list-right list-circle-five">
 
-                                        <span class="txt-box">
-                                            <p class="txt">{{ latest5_behavior.4.0.access_date|date:'Y-m-d' }} {{ latest5_behavior.4.0.access_time }}</p>
-                                            <p>访问 {{ latest5_behavior.4.0.application }}<br>
-                                                {% for key, value in latest5_behavior.4.1.iteritems %}
-                                                <a class="txt-key">{{ key }} :</a> {{ value }}<br>
-                                                {% endfor %}
-                                            </p>
-                                        </span>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -94,11 +84,9 @@
                     <!-- 用户画像-->
                     <div class="popup-img">
                             <span>
-                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
-                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
-                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
-                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
-                            <img src="../../static/assets/images/backgrounds/33333.jpg"  alt="picture"/>
+							{% for newest_img in newest_sniff_imgs%}
+                            <img src="../../static/assets/images/backgrounds/{{ newest_img }}"  alt="picture"/>
+                            {% endfor %}
                             </span>
                         </div>
                     <!-- 用户画像 end-->

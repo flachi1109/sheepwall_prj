@@ -67,7 +67,7 @@ def get_latest5_behavior(wifiuser_id):
     wechat_to_ip = wifiuser_item.local_ip
 
     latest_behavior = []
-    latest_behavior_qs = AppBehaviorLog.objects.filter(src_ip_addr=wechat_to_ip).order_by('-access_time')[0:5]
+    latest_behavior_qs = AppBehaviorLog.objects.filter(src_ip_addr=wechat_to_ip).order_by('-access_time')[0:4]
     for behavior_qs_item in latest_behavior_qs:
         behavior_with_value = {}
         behavior_with_value['行为'] = behavior_qs_item.behavior
@@ -100,6 +100,13 @@ def get_latest5_behavior(wifiuser_id):
 
     return latest_behavior
 
+def get_newest_sniff_pic(user_ip):
+	
+	img_path = '/home/ubuntu/sheepwall_prj/static/assets/images/wifiuserimgs/%s/' % user_ip
+	sniff_imgs=os.listdir(img_path)
+    sniff_imgs_sorted = l.sort(key=lambda fn: os.path.getctime(img_path+"/"+fn) if not os.path.isdir(img_path+"/"+fn) else 0)
+	return sniff_imgs_sorted[-4:-1]
+	
 @csrf_exempt
 def render_popup(request):
     '''
@@ -116,5 +123,6 @@ def render_popup(request):
         next_userid = 1
     latest5_behavior = get_latest5_behavior(next_userid)
     current_user = WifiUser.objects.get(id=next_userid)
+	newest_sniff_imgs = get_newest_sniff_pic(current_user.local_ip)
 
-    return render(request, 'popup-page.html', {'current_user':current_user, 'latest5_behavior':latest5_behavior})
+    return render(request, 'popup-page.html', {'current_user':current_user, 'latest5_behavior':latest5_behavior, 'newest_sniff_imgs':newest_sniff_imgs})

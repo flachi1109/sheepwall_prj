@@ -10,6 +10,7 @@
     <style>
 	.gradeA td{font-family:"微软雅黑";}
 	.gradeA-green{ color:#3bff8e; }
+	#demo .table-custom .gradeA{ height:64px; border-bottom:0; border-top:0;}
 	</style>
   </head>
   <body class="bg-1">	
@@ -20,7 +21,7 @@
 			  <!-- col-md-12 -->
               <div class="col-md-12"> 
 				<!-- 列表 -->
-                <section class="tile transparent tile-height" style="height:65%;">
+                <section class="tile transparent tile-height" style="height:50%;margin-bottom:15px;">
                   <!-- 标题 -->
                   <div class="tile-header transparent">
                     <h1>移动终端漏洞详情</h1>
@@ -175,7 +176,7 @@
                 </section>
 				<!-- 列表end -->
 				<!-- OS比例	-->
-                <section class="tile color transparent-black">
+                <section class="tile color transparent-black" style="height:45%;">
                   <!-- 饼图1 -->
 				  <div class="transparent-black-body">
 					<div class="tile-body tile-body-padding">
@@ -191,10 +192,10 @@
 						<div id="browser-usage-one" class="morris-chart"></div>
 						<ul class="chart-legend inline text-center" style=" margin-right:0; overflow:hideen; padding-left:15px;">
 							<li><span class="badge badge-outline" style="border-color: #00a3d8"></span>微信</li>
-							<li><span class="badge badge-outline" style="border-color: #2fbbe8"></span>QQ</li>
-							<li><span class="badge badge-outline" style="border-color: #72cae7"></span>新浪微博</li>
-							<li><span class="badge badge-outline" style="border-color: #d9544f"></span>百度</li>
-							<li><span class="badge badge-outline" style="border-color: #ffc100"></span>优酷 </li>
+							<li><span class="badge badge-outline" style="border-color: #00e8a9"></span>QQ</li>
+							<li><span class="badge badge-outline" style="border-color: #d9544f"></span>新浪微博</li>
+							<li><span class="badge badge-outline" style="border-color: #ffc100"></span>百度</li>
+							<li><span class="badge badge-outline" style="border-color: #005e81"></span>优酷 </li>
 						</ul>
 					</div>
 				  </div>
@@ -252,7 +253,7 @@
           {label: "应用程序", value: 15},
           {label: "应用程序", value: 5},
         ],
-        colors: ['#00a3d8', '#2fbbe8', '#72cae7', '#d9544f', '#ffc100', '#1693A5']
+        colors: ['#00a3d8', '#00e8a9','#d9544f', '#ffc100',  '#005e81', ]
     });
 
     $('#browser-usage').find("path[stroke='#ffffff']").attr('stroke', 'rgba(0,0,0,0)');
