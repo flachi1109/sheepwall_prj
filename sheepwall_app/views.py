@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+import os
 
 from models import *
 
@@ -37,6 +38,7 @@ def get_alluser_lastest_log():
             result_set[wifi_user] = AppBehaviorLog.objects.filter(src_ip_addr=wifi_user.local_ip).latest()
         except ObjectDoesNotExist:
             result_set[wifi_user] = ''
+    result_set = sorted(result_set.items(), key=lambda wifi_user:wifi_user[0].id, reverse=True)
     return result_set
 
 def render_index(request):
@@ -101,12 +103,16 @@ def get_latest5_behavior(wifiuser_id):
     return latest_behavior
 
 def get_newest_sniff_pic(user_ip):
-	
-	img_path = '/home/ubuntu/sheepwall_prj/static/assets/images/wifiuserimgs/%s/' % user_ip
-	sniff_imgs=os.listdir(img_path)
-    sniff_imgs_sorted = l.sort(key=lambda fn: os.path.getctime(img_path+"/"+fn) if not os.path.isdir(img_path+"/"+fn) else 0)
-	return sniff_imgs_sorted[-4:-1]
-	
+    img_path = '/home/ubuntu/sheepwall_prj/static/assets/images/wifiuserimgs/%s/' % user_ip
+    try:
+        sniff_imgs=os.listdir(img_path)
+        sort_result = sniff_imgs.sort(key=lambda fn: os.path.getctime(img_path+"/"+fn) if not os.path.isdir(img_path+"/"+fn) else 0)
+        sniff_imgs_sorted = sniff_imgs[-3:]
+    except OSError, e:
+        sniff_imgs_sorted = ['../../backgrounds/33333.jpg','../../backgrounds/33333.jpg','../../backgrounds/33333.jpg']
+
+    return sniff_imgs_sorted
+    
 @csrf_exempt
 def render_popup(request):
     '''
@@ -121,8 +127,14 @@ def render_popup(request):
             next_userid = 1
     else:
         next_userid = 1
-    latest5_behavior = get_latest5_behavior(next_userid)
-    current_user = WifiUser.objects.get(id=next_userid)
-	newest_sniff_imgs = get_newest_sniff_pic(current_user.local_ip)
-
+    while next_userid <= WifiUser.objects.last().id:
+        try:
+            latest5_behavior = get_latest5_behavior(next_userid)
+            current_user = WifiUser.objects.get(id=next_userid)
+            newest_sniff_imgs = get_newest_sniff_pic(current_user.local_ip)
+            break
+        except ObjectDoesNotExist:
+            next_userid += 1
+            
+        
     return render(request, 'popup-page.html', {'current_user':current_user, 'latest5_behavior':latest5_behavior, 'newest_sniff_imgs':newest_sniff_imgs})

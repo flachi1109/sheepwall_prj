@@ -51,8 +51,9 @@
                   </div>
                    <!-- 列表-表单 -->
                   <div id="demo" class="tile-body color transparent-white transparent-height" style="height:85%;">
+					<div id="demo1" >
                       <table  class="table table-datatable table-custom" id="inlineEditDataTable" style="border-collapse:collapse; ">
-                          {% for wifiuser, behavior in sheep_users.iteritems %}
+                          {% for wifiuser, behavior in sheep_users %}
                               <tr class="odd gradeA" >
                                 <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ wifiuser.local_ip }}.jpg"  alt="picture" /></td>
                                 <td class="sort-alpha-two">{{ wifiuser.wechat_nickname }}</td>
@@ -71,8 +72,8 @@
                           {% endfor %}
 
                       </table>
-
-
+					</div>
+					<div id="demo2"></div>
                   </div>
                 </section>
                 <!-- 列表end -->
@@ -113,10 +114,28 @@
         
         <!-- 信息滚动js -->
         <script>   
-        function marques(lh,speed,delay){    
+		<!-- 信息滚动js --> 
+		var speed = 20;  // 滚动速度
+		demo2.innerHTML = demo1.innerHTML;  
+		function Marquee() {  
+			if (demo2.offsetTop - demo.scrollTop <= 0) {  
+				demo.scrollTop -= demo1.offsetHeight;  
+			} else {  
+				demo.scrollTop++;  
+			}  
+		}  
+		var MyMar = setInterval(Marquee, speed);    
+		demo.onmouseover = function() {  
+			clearInterval(MyMar);  
+		}  
+	  
+		demo.onmouseout = function() {  
+			MyMar = setInterval(Marquee, speed);  
+		}  
+        /**function marques(lh,speed,delay){    
             var intervalFunction;    
-            var oHeight = 210; /** div的高度 **/  
-            var scrollDiv=document.getElementById("demo");    
+            var oHeight = 210;**/  /** div的高度 **/ 
+       /**     var scrollDiv=document.getElementById("demo");    
             var preTop = 0;   
             scrollDiv.scrollTop = 0;   
         //var p=false;   
@@ -144,7 +163,7 @@
             
             setTimeout(start,delay);    
         };
-        marques(40,150,500);    
+        marques(50,20,400);   **/  
     /**marquees(一次滚动高度,速度,停留时间);**/    
 </script>
   </body>

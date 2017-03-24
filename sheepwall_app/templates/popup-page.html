@@ -10,7 +10,7 @@
                             <ul>
                                 <li id="wechat_id" style="display:none">{{ current_user.id }}</li>
                                 <li>微信昵称：<span>{{ current_user.wechat_nickname }}</span></li>
-                                <li>操作系统：<span>{{ current_user.os_type }}</span></li>
+                                <li>操作系统：<span>{{ latest5_behavior.0.0.client }}</span></li>
                                 <li style="margin-right:0;">IP地址: <span>{{ current_user.local_ip }}</span></li>
                             </ul>
                         </div>
@@ -19,7 +19,7 @@
                         <ul>
                             <li>最近上网行为：
                                     {% for latest_behavior in latest5_behavior %}
-                                    <span>{{ latest_behavior.0.application }}<span style="color:#999999;">>></span></span>
+                                    <span>{{ latest_behavior.0.application }}<span style="color:#999999;"> >> </span></span>
                                     {% endfor %}
                                 </li>
                         </ul>
@@ -85,7 +85,7 @@
                     <div class="popup-img">
                             <span>
 							{% for newest_img in newest_sniff_imgs%}
-                            <img src="../../static/assets/images/backgrounds/{{ newest_img }}"  alt="picture"/>
+                            <img src="../../static/assets/images/wifiuserimgs/{{ current_user.local_ip }}/{{ newest_img }}"  alt="picture"/>
                             {% endfor %}
                             </span>
                         </div>

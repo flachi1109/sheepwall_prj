@@ -12,7 +12,7 @@ BEHAVIOR_TYPE_DES = {'Login':'登录', 'SendText':'发消息', 'SendVideo':'发�
                     'Report':'发布', 'ReceiveText':'收消息', 'DownloadFile':'下载文件', 'QunText':'群消息',\
                     'OnlinePlay':'在线播放', 'Voip':'即时通话'} 
 APP_CN_NAME	= {'QQ':'QQ', 'WeChat':'微信', 'ALiWangWang':'阿里旺旺', 'BaiduTieBa':'百度贴吧', 'SinaWeiBo':'新浪微博', 
-               'Search_Bing':'Bing搜索网页版', 'Search_JDMall':'京东搜索', 'Search_360':'360搜索', 'Search_Sougou':'搜狗搜索', 
+               'Search_Bing':'Bing搜索网页版', 'Search_JDMall':'京东搜索', '360Search':'360搜索', 'Search_Sougou':'搜狗搜索', 
 			   'ChinaSo':'中国搜索', 'TencentWeiBo':'腾讯微博', '126WebEmail':'126邮箱', '163Email':'163邮箱', 'SinaMail':'新浪邮箱',
 			   'QQMail':'QQ邮箱', 'iQiYiPPS':'爱奇艺', 'Letv':'乐视视频', 'TencentVideo':'腾讯视频', 'YouKu':'优酷', 'BaiduCloud':'百度云',
 			   'QQXuanFeng':'QQ旋风', 'TianYaBBS':'天涯社区', 'PandaTV':'熊猫TV', 'DouYuTV':'斗鱼TV', 'Inke':'映客直播', 'SohuCommunity':'搜狐社区',
@@ -69,7 +69,8 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
             else:
                 return False
         except Exception, e:
-            print e.message
+            print '\033[0;31m[Exception Info]: \033[0m'+e.message
+            print '\033[0;34m[Origin Syslog]: \033[0m'+syslog_msg
             return False
 
     def handle(self):
@@ -85,7 +86,8 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
                 exec_str = 'behavior_item.%s=\'%s\'' % (key, value)
                 exec(exec_str)
             behavior_item.save()
-            print 'Yes,saved'
+            print '\033[0;36m[Save Item]: \033[0mlogid=%s, date= %s, time=%s, app_name=%s, behavior=%s' % (behavior_item.id, \
+                  behavior_item.access_date, behavior_item.access_time, behavior_item.application, behavior_item.behavior)
 
 
 def start_syslog_server(host, port):
