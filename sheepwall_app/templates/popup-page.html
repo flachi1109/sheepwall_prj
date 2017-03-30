@@ -11,7 +11,13 @@
                                 <li id="wechat_id" style="display:none">{{ current_user.id }}</li>
                                 <li id="current_newuser_id" style="display:none">{{ newest_user_id }}</li>
                                 <li>微信昵称：<span>{{ current_user.wechat_nickname }}</span></li>
-                                <li>操作系统：<span>{{ latest5_behavior.0.0.client }}</span></li>
+                                <li>操作系统：<span>
+                                            {% ifequal current_user.os_type '' %}
+                                                正在获取
+                                            {% else %}
+                                                {{ current_user.os_type }}
+                                            {% endifequal %}
+                                            </span></li>
                                 <li style="margin-right:0;">IP地址: <span>{{ current_user.local_ip }}</span></li>
                             </ul>
                         </div>

@@ -6342,7 +6342,7 @@ function update_popup_page(){
             }
         });
 }
-var popup_timer = setInterval(update_popup_page, 20000);
+var popup_timer = setInterval(update_popup_page, 25000);
 
 
 //update wifi user table
@@ -6403,17 +6403,17 @@ var ModalEffects = (function() {
                     }
                     close_timer = window.setTimeout(function(){
                         removeModalHandler();
-                    },9000);//这里控制关闭时间一秒是1000
+                    },13000);//这里控制关闭时间一秒是1000
                 }
-                var open_timer = window.setInterval(open_popup,20000);//这里控制打开时间，一秒是1000
+                var open_timer = window.setInterval(open_popup,25000);//这里控制打开时间，一秒是1000
                
                //恢复弹出窗口
                 function resumePopup(){
                     removeModalHandler();
                     setTimeout(update_popup_page, 3000);
-                    popup_timer = setInterval(update_popup_page, 20000);                   
-                    open_timer = window.setInterval(open_popup,20000);
-                    setTimeout(open_popup, 6000);
+                    popup_timer = setInterval(update_popup_page, 25000);                   
+                    open_timer = window.setInterval(open_popup,25000);
+                    setTimeout(open_popup, 8000);
 
                     
                 }
@@ -6461,10 +6461,10 @@ var ModalEffects = (function() {
                     }, 25 );
                 }
             });
-            close.addEventListener( 'click', function( ev ) {
-                ev.stopPropagation();
-                removeModalHandler();
-            });
+            // close.addEventListener( 'click', function( ev ) {
+                // ev.stopPropagation();
+                // removeModalHandler();
+            // });
 
         } );
 
