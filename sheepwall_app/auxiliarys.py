@@ -86,7 +86,7 @@ class SyslogHandler(SocketServer.BaseRequestHandler):
                 exec_str = 'behavior_item.%s=\'%s\'' % (key, value)
                 exec(exec_str)
             behavior_item.save()
-            print '\033[0;36m[Save Item]: \033[0mlogid=%s, date= %s, time=%s, app_name=%s, behavior=%s' % (behavior_item.id, \
+            print '\033[0;36m[Save Item]: \033[0mlocal_ip=%s, logid=%s, date= %s, time=%s, app_name=%s, behavior=%s' % (behavior_item.src_ip_addr, behavior_item.id, \
                   behavior_item.access_date, behavior_item.access_time, behavior_item.application, behavior_item.behavior)
 
 
@@ -95,5 +95,6 @@ def start_syslog_server(host, port):
     syslog_server.serve_forever()
 
 if __name__ == '__main__':
+    print '[Starting Process Application Behavior Log]'
     host, port = "0.0.0.0", 9999
     start_syslog_server(host, port)

@@ -1,16 +1,16 @@
 {% for wifiuser, behavior in sheep_users %}
 <tr class="odd gradeA" >
-    <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ wifiuser.local_ip }}.jpg"  alt="picture" /></td>
+    <td class="img-size" ><label class='user_id' style='display:none'>{{ wifiuser.id }}</label><img src="../../static/assets/images/wifiuserimgs/headimg/{{ wifiuser.local_ip }}.jpg"  alt="picture" /></td>
     <td class="sort-alpha-two">{{ wifiuser.wechat_nickname }}</td>
     {% if behavior.application %}
-        {% ifequal behavior.client '' %}
-        <td class="sort-amount-width">Unknown</td>
+        {% ifequal wifiuser.os_type '' %}
+        <td class="sort-amount-width">正在获取</td>
         {% else %}
-        <td class="sort-amount-width">{{ behavior.client }}</td>
+        <td class="sort-amount-width">{{ wifiuser.os_type }}</td>
         {% endifequal %}
         <td> 正在使用 <span style="color:#35ff8f;">{{ behavior.application }}，</span>进行 <span style="color:#35ff8f;">{{ behavior.behavior }}</span></td>
     {% else %}
-        <td class="sort-amount-width">Unknown</td>
+        <td class="sort-amount-width">正在获取</td>
         <td> 暂无操作 </td>
     {% endif %}
 </tr>

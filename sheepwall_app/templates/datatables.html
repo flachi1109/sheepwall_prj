@@ -10,7 +10,9 @@
     <style>
 	.gradeA td{font-family:"微软雅黑";}
 	.gradeA-green{ color:#3bff8e; }
-	#demo .table-custom .gradeA{ height:64px; border-bottom:0; border-top:0;}
+	#demo .table-custom .gradeA { height:64px; border-bottom:0; border-top:0;}
+	body #content #demo1 .table-custom >tr > td {
+    font-size: 14px;}
 	</style>
   </head>
   <body class="bg-1">	
@@ -27,7 +29,7 @@
                     <h1>移动终端漏洞详情</h1>
                   </div>
 				  <!-- 列表-表头 -->
-				  <div class="tile-body color transparent-white rounded-corners padding">
+				  <div class="tile-body color transparent-white rounded-corners padding" style="border:1px solid rgba(50,248,255,0.06);border-bottom:0;">
                     
                     <div class="table-responsive">
 						<table  class="table table-datatable table-custom" id="inlineEditDataTable ">
@@ -43,12 +45,12 @@
 					</div>
 				  </div>
 				   <!-- 列表-表单 -->
-                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:74%;  border-top:0;">                   
+                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:74%; border:1px solid rgba(50,248,255,0.06);border-top:0;">                   
                     <div id="demo1" class="table-responsive;">
                       <table  class="table table-datatable table-custom" id="inlineEditDataTable">
                         
                         
-                          <tr class="odd gradeA" style="border-top:1px solid rgba(134, 219, 245, 0.1);" >
+                          <tr class="odd gradeA" >
                             <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.0.local_ip}}.jpg"  alt="picture" /></td>
                             <td class="sort-alpha-two">{{ sheep_users.0.local_ip }}</td>
                             <td class="sort-amount-width">Android 4.4.4</td>
@@ -182,20 +184,20 @@
 					<div class="tile-body tile-body-padding">
 						<div id="browser-usage" class="morris-chart" ></div>
 						<ul class="chart-legend" style="float:left; ">
-							<li><span class="badge badge-outline" style="border-color: #00a3d8;"></span> IOS</li>
-							<li><span class="badge badge-outline" style="border-color: #d9544f;"></span> Andriod</li>
+							<li><span class="badge badge-outline" style="border-color: #00a3d8;"></span> Andriod</li>
+							<li><span class="badge badge-outline" style="border-color: #d9544f;"></span> IOS</li>
 							<li><span class="badge badge-outline" style="border-color: #ffc100;"></span> Windows</li>
 						</ul>
 					</div>
                   <!-- 饼图2 -->
 					<div class="tile-body tile-body-padding">
 						<div id="browser-usage-one" class="morris-chart"></div>
-						<ul class="chart-legend inline text-center" style=" margin-right:0; overflow:hideen; padding-left:15px;">
+						<ul class="chart-legend inline text-center" style=" margin-right:0; overflow:hideen; padding-left:30px;">
 							<li><span class="badge badge-outline" style="border-color: #00a3d8"></span>微信</li>
 							<li><span class="badge badge-outline" style="border-color: #00e8a9"></span>QQ</li>
 							<li><span class="badge badge-outline" style="border-color: #d9544f"></span>新浪微博</li>
 							<li><span class="badge badge-outline" style="border-color: #ffc100"></span>百度</li>
-							<li><span class="badge badge-outline" style="border-color: #005e81"></span>优酷 </li>
+							<li><span class="badge badge-outline" style="border-color: #005e81"></span>其他 </li>
 						</ul>
 					</div>
 				  </div>
@@ -237,9 +239,9 @@
     Morris.Donut({
         element: 'browser-usage',
         data: [
-          {label: "操作系统", value: 40},			<!-- 此处更换饼图数据--> 
-          {label: "操作系统", value: 40},
-          {label: "操作系统", value: 20}
+          {label: "操作系统", value: 58},			<!-- 此处更换饼图数据--> 
+          {label: "操作系统", value: 37},
+          {label: "操作系统", value: 5}
         ],
         colors: ['#00a3d8', '#d9544f', '#ffc100', '#1693A5']
     });
@@ -247,11 +249,11 @@
     Morris.Donut({
         element: 'browser-usage-one',
         data: [
-          {label: "应用程序", value: 40},    <!-- 此处更换饼图数据-->  
-          {label: "应用程序", value: 25},
-          {label: "应用程序", value: 15},
-          {label: "应用程序", value: 15},
-          {label: "应用程序", value: 5},
+          {label: "应用程序", value: 52},    <!-- 此处更换饼图数据-->  
+          {label: "应用程序", value: 9},
+          {label: "应用程序", value: 6},
+          {label: "应用程序", value: 13},
+          {label: "应用程序", value: 20},
         ],
         colors: ['#00a3d8', '#00e8a9','#d9544f', '#ffc100',  '#005e81', ]
     });

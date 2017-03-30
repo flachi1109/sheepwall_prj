@@ -15,34 +15,13 @@ html {
     left: 0;
  }
 
-.mm-page {
-  height: 100%;
-  min-height: 100%; }
-
-#wrap {
-  margin: 0;
-  padding: 0 15px;
-  height: 100%;
-  min-height: 100%; }
-  #wrap > .row {
-    height: 100%;
-    min-height: 100%; }
-  #wrap #content {
-    padding-bottom: 0;
-    padding-right: 25px;
-    height: 100%;
-    width: 100%; }
-    #wrap #content .main {
-      margin: 10px 0; }
 
 body {
   font-family: "Roboto", "Arial", sans-serif;
   font-size: 14px;
   font-weight: 400;
   -webkit-font-smoothing: antialiased; }
-  body.modal-open {
-    overflow: auto;
-    margin-right: 0; }
+
   .bg-1{
     background-image: url(../images/noise.png), url(../images/backgrounds/1.jpg);
     background-repeat: repeat, no-repeat;
@@ -70,9 +49,7 @@ body #content .tile {
   body #content .tile.transparent {
     background-color: transparent; }
     body #content .tile.transparent .tile-header,
-    body #content .tile.transparent .tile-widget,
-    body #content .tile.transparent .tile-body,
-    body #content .tile.transparent .tile-footer {
+    body #content .tile.transparent .tile-body {
       background-color: white; }
       body #content .tile.transparent .tile-header.transparent,
       body #content .tile.transparent .tile-widget.transparent,
@@ -272,7 +249,7 @@ body #content .tile {
           opacity: .8; }
     body #content .tile .tile-header.transparent {
       background-color: transparent;
-      border-bottom:1px solid rgba(134, 219, 245, 0.5);
+     
       margin-bottom: 15px;
       color: #50e9ff; }
       body #content .tile .tile-header.transparent .controls a {
@@ -322,7 +299,7 @@ body #content .tile {
     body #content .tile .tile-footer.border-top,
     body #content .tile .tile-left-side.border-top,
     body #content .tile .tile-right-side.border-top {
-      border-top: 1px solid rgba(0, 0, 0, 0.05); }
+      border-top: 1px solid rgba(0, 0, 0, 0.5); }
     body #content .tile .tile-header.paddingtop,
     body #content .tile .tile-widget.paddingtop,
     body #content .tile .tile-body.paddingtop,
@@ -368,7 +345,7 @@ body #content .tile {
     body #content .tile .tile-footer.color,
     body #content .tile .tile-left-side.color,
     body #content .tile .tile-right-side.color {
-      color: #85f2ff; }
+      color: #47feff; }
       body #content .tile .tile-header.color .controls a,
       body #content .tile .tile-widget.color .controls a,
       body #content .tile .tile-body.color .controls a,
@@ -509,7 +486,7 @@ body #content .tile {
       body #content .tile .tile-left-side.color.transparent-white,
       body #content .tile .tile-right-side.color.transparent-white {
         background-color: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(134, 219, 245, 0.1);
+        
 		border-bottom:0;
 		border-radius
 		border-top:none;
@@ -3720,11 +3697,8 @@ body #content .tile-right-side {
       body #content .tile-right-side.transparent-white table > tfoot > tr {
         border-color: rgba(255, 255, 255, 0.5); }
         body #content .tile.transparent-white table > thead > tr > td,
-        body #content .tile.transparent-white table > thead > tr > th,
         body #content .tile.transparent-white table > tbody > tr > td,
-        body #content .tile.transparent-white table > tbody > tr > th,
         body #content .tile.transparent-white table > tfoot > tr > td,
-        body #content .tile.transparent-white table > tfoot > tr > th,
         body #content .tile-header.transparent-white table > thead > tr > td,
         body #content .tile-header.transparent-white table > thead > tr > th,
         body #content .tile-header.transparent-white table > tbody > tr > td,
@@ -3761,7 +3735,7 @@ body #content .tile-right-side {
         body #content .tile-right-side.transparent-white table > tbody > tr > th,
         body #content .tile-right-side.transparent-white table > tfoot > tr > td,
         body #content .tile-right-side.transparent-white table > tfoot > tr > th {
-          border-color: rgba(255, 255, 255, 0.5); }
+          border-color: rgba(255, 255, 255, 0); }
         body #content .tile.transparent-white table > thead > tr.active > td,
         body #content .tile.transparent-white table > thead > tr.active > tr,
         body #content .tile.transparent-white table > tbody > tr.active > td,
@@ -4312,7 +4286,7 @@ body #content .tile-right-side {
     body #content .tile-right-side.transparent-white table.table-custom > thead > tr > th:after,
     body #content .tile-right-side.transparent-white table.table-custom > thead > tr > td:after {
 	  
-      background-color: #54c3d3; }
+      background-color: #47feff; }
     body #content .tile.color table.table-custom > thead > tr > th.sortable:hover, body #content .tile.color table.table-custom > thead > tr > th.sorting:hover,
     body #content .tile.color table.table-custom > thead > tr > td.sortable:hover,
     body #content .tile.color table.table-custom > thead > tr > td.sorting:hover, body #content .tile.transparent-black table.table-custom > thead > tr > th.sortable:hover, body #content .tile.transparent-black table.table-custom > thead > tr > th.sorting:hover,
@@ -5101,48 +5075,7 @@ body #content .tile-right-side {
       body #content .tile-right-side.transparent-white table.table-custom > thead > tr > td.sorting_asc:hover:after,
       body #content .tile-right-side.transparent-white table.table-custom > thead > tr > td.sorting_desc:hover:after {
         background-color: white; }
-  body #content .tile.color table.table-custom > tbody > tr > th,
-  body #content .tile.color table.table-custom > tbody > tr > td, body #content .tile.transparent-black table.table-custom > tbody > tr > th,
-  body #content .tile.transparent-black table.table-custom > tbody > tr > td, body #content .tile.transparent-white table.table-custom > tbody > tr > th,
-  body #content .tile.transparent-white table.table-custom > tbody > tr > td,
-  body #content .tile-header.color table.table-custom > tbody > tr > th,
-  body #content .tile-header.color table.table-custom > tbody > tr > td,
-  body #content .tile-header.transparent-black table.table-custom > tbody > tr > th,
-  body #content .tile-header.transparent-black table.table-custom > tbody > tr > td,
-  body #content .tile-header.transparent-white table.table-custom > tbody > tr > th,
-  body #content .tile-header.transparent-white table.table-custom > tbody > tr > td,
-  body #content .tile-widget.color table.table-custom > tbody > tr > th,
-  body #content .tile-widget.color table.table-custom > tbody > tr > td,
-  body #content .tile-widget.transparent-black table.table-custom > tbody > tr > th,
-  body #content .tile-widget.transparent-black table.table-custom > tbody > tr > td,
-  body #content .tile-widget.transparent-white table.table-custom > tbody > tr > th,
-  body #content .tile-widget.transparent-white table.table-custom > tbody > tr > td,
-  body #content .tile-body.color table.table-custom > tbody > tr > th,
-  body #content .tile-body.color table.table-custom > tbody > tr > td,
-  body #content .tile-body.transparent-black table.table-custom > tbody > tr > th,
-  body #content .tile-body.transparent-black table.table-custom > tbody > tr > td,
-  body #content .tile-body.transparent-white table.table-custom > tbody > tr > th,
-  body #content .tile-body.transparent-white table.table-custom > tbody > tr > td,
-  body #content .tile-footer.color table.table-custom > tbody > tr > th,
-  body #content .tile-footer.color table.table-custom > tbody > tr > td,
-  body #content .tile-footer.transparent-black table.table-custom > tbody > tr > th,
-  body #content .tile-footer.transparent-black table.table-custom > tbody > tr > td,
-  body #content .tile-footer.transparent-white table.table-custom > tbody > tr > th,
-  body #content .tile-footer.transparent-white table.table-custom > tbody > tr > td,
-  body #content .tile-left-side.color table.table-custom > tbody > tr > th,
-  body #content .tile-left-side.color table.table-custom > tbody > tr > td,
-  body #content .tile-left-side.transparent-black table.table-custom > tbody > tr > th,
-  body #content .tile-left-side.transparent-black table.table-custom > tbody > tr > td,
-  body #content .tile-left-side.transparent-white table.table-custom > tbody > tr > th,
-  body #content .tile-left-side.transparent-white table.table-custom > tbody > tr > td,
-  body #content .tile-right-side.color table.table-custom > tbody > tr > th,
-  body #content .tile-right-side.color table.table-custom > tbody > tr > td,
-  body #content .tile-right-side.transparent-black table.table-custom > tbody > tr > th,
-  body #content .tile-right-side.transparent-black table.table-custom > tbody > tr > td,
-  body #content .tile-right-side.transparent-white table.table-custom > tbody > tr > th,
-  body #content .tile-right-side.transparent-white table.table-custom > tbody > tr > td {
-	 
-    border-color: rgba(134, 219, 245, 0.1); }
+
     body #content .tile.color table.table-custom > tbody > tr > th.priority,
     body #content .tile.color table.table-custom > tbody > tr > td.priority, body #content .tile.transparent-black table.table-custom > tbody > tr > th.priority,
     body #content .tile.transparent-black table.table-custom > tbody > tr > td.priority, body #content .tile.transparent-white table.table-custom > tbody > tr > th.priority,
@@ -7245,7 +7178,7 @@ li.dropdown ul.dropdown-menu.bordered > li {
     height: 20px;
     padding: 0;
 	padding-top:3px;
-    border: 2px solid #717171;
+    border: 1px solid #717171;
     background: transparent; }
 
 /***********************************/
@@ -8075,7 +8008,7 @@ blockquote.filled.text-right {
   border-right: 5px solid; }
 
 blockquote.filled i {
-  font-size: 46px;
+  font-size: 12px;
   margin: 0 10px 10px 0;
   color: rgba(0, 0, 0, 0.1); }
 
@@ -9480,7 +9413,7 @@ a.submit:hover {
 /* morris */
 .morris-chart text {
   fill: white;
-  font-family: "Roboto Slab", serif !important; }
+  font-family: "Microsoft Yahei","Roboto Slab", serif !important; }
 .morris-chart svg {
   width: 100% !important; }
 
@@ -9754,7 +9687,7 @@ body #content .inbox table {
   body #content .tile table.table-custom > thead > tr > td,
   body #content .inbox table.table-custom > thead > tr > th,
   body #content .inbox table.table-custom > thead > tr > td {
-    
+    text-align:center;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 400;
@@ -9931,15 +9864,13 @@ body #content .inbox table {
       body #content .inbox table.table-custom > thead > tr > td.sorting_asc:hover:after,
       body #content .inbox table.table-custom > thead > tr > td.sorting_desc:hover:after {
         background-color: #717171; }
-  body #content .tile table.table-custom > tbody > tr > th,
-  body #content .tile table.table-custom > tbody > tr > td,
-  body #content .inbox table.table-custom > tbody > tr > th,
-  body #content .inbox table.table-custom > tbody > tr > td {
-	  padding-top:3px;
-    font-size: 14px;
-    padding-left: 0;
+ 
+  body #content .table-custom >tr > td {
+	padding: 0;
+    font-size: 16px;   
     line-height: 24px;
     -webkit-font-smoothing: antialiased; }
+	
     body #content .tile table.table-custom > tbody > tr > th.priority,
     body #content .tile table.table-custom > tbody > tr > td.priority,
     body #content .inbox table.table-custom > tbody > tr > th.priority,
@@ -12512,11 +12443,11 @@ body #content.full-page.error .search {
 	body #content .row .col-md-12 .tile .padding{ padding-bottom:0; border-bottom:0;border-radius:4px 4px 0 0;}
 	.row .col-md-12 .tile .transparent-height{ border-radius:0 0 4px 4px;}
 	.transparent-black{overflow:hidden; height:30%;}
-	.tile-body img{display:block; margin:0 auto;height:58%;max-width:auto; margin-top:6px;}
-	.odd .img-size{ height:38px;min-width:85px;}
+	.tile-body img{display:block; margin:0 auto;height:58%;max-width:auto; margin-bottom:10px;}
+	.odd .img-size{ height:38px;min-width:85px; width:12%;}
 	.odd img{ height:38px; width:38px;margin-top:0; border-radius:300px;margin:1px auto; }
 	.odd .sort-alpha-width{width:12%;}
-	.odd .sort-alpha-two{width:19%;}
+	.odd .sort-alpha-two{width:18%;}
 	.odd .sort-amount-width{width:21%;}
 	  /**h1.sans-serif, h2.sans-serif, h3.sans-serif, h4.sans-serif, h5.sans-serif, h6.sans-serif, .h1.sans-serif, .h2.sans-serif, .h3.sans-serif, .h4.sans-serif, .h5.sans-serif, .h6.sans-serif {
     font-family: "微软雅黑","Arial","Roboto"; }**/
@@ -12525,18 +12456,24 @@ body #content.full-page.error .search {
 		float:left;
 		text-align:center;
 		list-style:none;
-		margin-right:3px;
+		margin-right:5px;
 	}
 	ul.chart-legend{
 		width:300px;
 		padding-left:0;
 	}
 	.tile  .tile-height-one{
+		width:570px;
+		margin:0 auto;
+		margin-top:26px;
+		overflow:hidde;
 		padding-top:0;
 		height:90%;
 	}
 	.morris-chart-height{
+		float:left;
 		margin-top:10px;
+		margin-right:45px;
 		height:90%;
 	}
 	.transparent-black-add{
@@ -12564,7 +12501,7 @@ body #content.full-page.error .search {
 	}
 	.badge-outline li{display:block;float:left;}
 	.tile-header{font-family:"微软雅黑"; margin-top:30px;}
-	.tile-body-padding  div{ height: 300px;}
+	.tile-body-padding  div{ height: 260px;}
 	ul{
 	padding:0;
 	margin:0;}
@@ -12578,3 +12515,6 @@ body #content.full-page.error .search {
 	#demo .table-custom .gradeA{ height:60px;}
 	.tile-body-padding .chart-legend{padding-top:15px; padding-left:10px;}
 	.transparent-black .tile-body-padding .text-center{ padding-left:10px;}
+	.font-strong{ color:#1eff92; padding-right:4px;}
+	.morris-chart-height span{text-align:center; display:block; font-size:18px;}
+	.morris-chart-height-add  img{ height:30px; width:30px; margin-top:70px; margin-left:10px;}

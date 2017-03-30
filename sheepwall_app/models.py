@@ -8,7 +8,6 @@ class WifiUser(models.Model):
     mac_addr = models.CharField(max_length=20, null=True)
     os_type = models.CharField(max_length=10, null=True)
 
-
 # Record the online users' app behavior log
 class AppBehaviorLog(models.Model):
     src_ip_addr = models.GenericIPAddressField( )
@@ -36,3 +35,7 @@ class AppBehaviorLog(models.Model):
         os_type = models.CharField(max_length=10, null=True)
         version_num = models.CharField(max_length=10, null=True)
         vulns_detail = models.CharField(max_length=60, null=True)
+
+class Mac_IP(models.Model):
+    IP = models.CharField(max_length=255, null=True)
+    Mac = models.CharField(max_length=255, null=True)

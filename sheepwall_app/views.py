@@ -24,6 +24,12 @@ def resp_wifiuser_num():
     result = "{'wifiuser_num':%s}" % WifiUser.objects.count()
     return HttpResponse(result, content_type='application/json')
 
+def update_wifiuser_ostype(latest_app_log):
+    wifi_user = WifiUser.objects.get(local_ip=latest_app_log.src_ip_addr)
+    if wifi_user.os_type == '' and latest_app_log.client != '':
+        wifi_user.os_type = latest_app_log.client
+        wifi_user.save()
+
 def get_alluser_lastest_log():
     '''
     Get all the online users and their latest behavior log
@@ -35,8 +41,11 @@ def get_alluser_lastest_log():
     result_set = {}
     for wifi_user in all_user_set:
         try:
-            result_set[wifi_user] = AppBehaviorLog.objects.filter(src_ip_addr=wifi_user.local_ip).latest()
-        except ObjectDoesNotExist:
+            latest_app_log = AppBehaviorLog.objects.filter(src_ip_addr=wifi_user.local_ip).order_by('-access_date', '-access_time')[0]
+            result_set[wifi_user] = latest_app_log
+            update_wifiuser_ostype(latest_app_log)
+
+        except (ObjectDoesNotExist, IndexError):
             result_set[wifi_user] = ''
     result_set = sorted(result_set.items(), key=lambda wifi_user:wifi_user[0].id, reverse=True)
     return result_set
@@ -69,7 +78,7 @@ def get_latest5_behavior(wifiuser_id):
     wechat_to_ip = wifiuser_item.local_ip
 
     latest_behavior = []
-    latest_behavior_qs = AppBehaviorLog.objects.filter(src_ip_addr=wechat_to_ip).order_by('-access_time')[0:4]
+    latest_behavior_qs = AppBehaviorLog.objects.filter(src_ip_addr=wechat_to_ip).order_by('-access_date','-access_time')[0:4]
     for behavior_qs_item in latest_behavior_qs:
         behavior_with_value = {}
         behavior_with_value['行为'] = behavior_qs_item.behavior
@@ -121,20 +130,50 @@ def render_popup(request):
     :return:
     '''
     next_userid = request.POST.get('next_userid', '')
-    if next_userid and next_userid!='NaN':
-        next_userid = int(next_userid)
-        if next_userid > WifiUser.objects.last().id:
-            next_userid = 1
-    else:
-        next_userid = 1
-    while next_userid <= WifiUser.objects.last().id:
-        try:
-            latest5_behavior = get_latest5_behavior(next_userid)
-            current_user = WifiUser.objects.get(id=next_userid)
+    current_newuser_id = request.POST.get('current_newuser_id', '')
+    
+    if current_newuser_id and current_newuser_id!='NaN':
+        current_newuser_id = int(current_newuser_id)
+        if current_newuser_id < WifiUser.objects.last().id:
+            latest5_behavior = get_latest5_behavior(WifiUser.objects.last().id)
+            current_user = WifiUser.objects.get(id=WifiUser.objects.last().id)
             newest_sniff_imgs = get_newest_sniff_pic(current_user.local_ip)
-            break
-        except ObjectDoesNotExist:
-            next_userid += 1
+            newest_user_id = WifiUser.objects.last().id
+        else:
+            if next_userid and next_userid!='NaN':
+                next_userid = int(next_userid)
+                if next_userid < 1:
+                    next_userid = WifiUser.objects.last().id
+            else:
+                next_userid = WifiUser.objects.last().id
+            while next_userid > 0:
+                try:
+                    latest5_behavior = get_latest5_behavior(next_userid)
+                    current_user = WifiUser.objects.get(id=next_userid)
+                    newest_sniff_imgs = get_newest_sniff_pic(current_user.local_ip)
+                    break
+                except ObjectDoesNotExist:
+                    next_userid -= 1
             
+            newest_user_id = current_newuser_id    
         
-    return render(request, 'popup-page.html', {'current_user':current_user, 'latest5_behavior':latest5_behavior, 'newest_sniff_imgs':newest_sniff_imgs})
+    else:
+    
+        if next_userid and next_userid!='NaN':
+            next_userid = int(next_userid)
+            if next_userid < 1:
+                next_userid = WifiUser.objects.last().id
+        else:
+            next_userid = WifiUser.objects.last().id
+        while next_userid > 0:
+            try:
+                latest5_behavior = get_latest5_behavior(next_userid)
+                current_user = WifiUser.objects.get(id=next_userid)
+                newest_sniff_imgs = get_newest_sniff_pic(current_user.local_ip)
+                break
+            except ObjectDoesNotExist:
+                next_userid -= 1
+        
+        newest_user_id = current_newuser_id
+        
+    return render(request, 'popup-page.html', {'current_user':current_user, 'latest5_behavior':latest5_behavior, 'newest_sniff_imgs':newest_sniff_imgs, 'newest_user_id':newest_user_id})

@@ -6315,26 +6315,36 @@ function FilterRepeatingGradientForOutput(aValue, aEngine)
  * Copyright 2013, Codrops
  * http://www.codrops.com
  */
-setInterval(function(){
+function update_popup_page(){
         var current_userid;
+        
         if ($('#wechat_id').text() != ''){
             current_userid = parseInt($('#wechat_id').text());
         } else{
             current_userid = 0;
+        }
+        
+        if ($('#current_newuser_id').text() != ''){
+            current_newuser_id = parseInt($('#current_newuser_id').text());
+        } else{
+            current_newuser_id = 1;
         }
 
         $.ajax({
             type: 'post',
             url: '/popup/',
             dateType: 'text',
-            data: { 'next_userid': current_userid+1 },
+            data: { 'next_userid': current_userid-1, 'current_newuser_id': current_newuser_id},
             success: function(data){
                 if(data.length > 0){
-                    $('#modal-11').html(data);
+                    $('#modal-content').html(data);
                 }
             }
         });
-    }, 15000);
+}
+var popup_timer = setInterval(update_popup_page, 20000);
+
+
 //update wifi user table
 setInterval(function(){
     $.ajax({
@@ -6345,6 +6355,7 @@ setInterval(function(){
         success: function(data){
             if(data.length > 0){
                     $('#inlineEditDataTable').html(data);
+                    demo2.innerHTML=demo1.innerHTML; 
             }
         }
      });
@@ -6355,6 +6366,7 @@ var ModalEffects = (function() {
     function init() {
 
         var overlay = document.querySelector( '.md-overlay' );
+
 
         [].slice.call( document.querySelectorAll( '.md-trigger' ) ).forEach( function( el, i ) {
 
@@ -6372,22 +6384,70 @@ var ModalEffects = (function() {
             function removeModalHandler() {
                 removeModal( classie.has( el, 'md-setperspective' ) ); 
             }
+
 // ==========================控制自动弹出和关闭的参数========================================================
 
             (function(){
-                var timer = window.setInterval(function(){
+                
+                var close_timer;
+                
+                //打开弹窗
+                function open_popup(){
+                    
                     classie.add( modal, 'md-show' );
-                    overlay.removeEventListener( 'click', removeModalHandler );
-                    overlay.addEventListener( 'click', removeModalHandler );
+
                     if( classie.has( el, 'md-setperspective' ) ) {
                         setTimeout( function() {
                             classie.add( document.documentElement, 'md-perspective' );
                         }, 25 );
                     }
-                    var timer2 = window.setTimeout(function(){
+                    close_timer = window.setTimeout(function(){
                         removeModalHandler();
                     },9000);//这里控制关闭时间一秒是1000
-                },15000)//这里控制打开时间，一秒是1000
+                }
+                var open_timer = window.setInterval(open_popup,20000);//这里控制打开时间，一秒是1000
+               
+               //恢复弹出窗口
+                function resumePopup(){
+                    removeModalHandler();
+                    setTimeout(update_popup_page, 3000);
+                    popup_timer = setInterval(update_popup_page, 20000);                   
+                    open_timer = window.setInterval(open_popup,20000);
+                    setTimeout(open_popup, 6000);
+
+                    
+                }
+                
+                //暂停弹出窗口
+                function pausePopup(){
+                    clearTimeout(close_timer);
+                    clearInterval(open_timer);
+                    clearInterval(popup_timer);
+                    
+                }
+                
+               // function update_spec_pop(){
+                    // $('.img-size').find('img').each(function(){
+                        // function spec_pop(){
+                            // var spec_id = $(this).prev().text();
+                            // $('#wechat_id').html(spec_id);
+                            // update_popup_page();
+                            // setTimeout(open_popup, 1500);                            
+                        // }
+                        // this.removeEventListener( 'dblclick', spec_pop);
+                        // this.addEventListener( 'dblclick', spec_pop);
+                    // });
+                // }
+                // update_spec_pop();
+                //setInterval(update_spec_pop, 3000);
+                
+                overlay.removeEventListener( 'dblclick', resumePopup );
+                overlay.addEventListener( 'dblclick', resumePopup );
+                overlay.removeEventListener( 'click', pausePopup );
+                overlay.addEventListener( 'click', pausePopup );
+                overlay.onselectstart = function(){return false;};
+                
+                
             })();
 // =============================================================================
             el.addEventListener( 'click', function( ev ) {

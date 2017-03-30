@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>绵羊墙</title>
+    <meta charset="UTF-8" />
+	<!-- css -->
+    <link href="../../static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/assets/css/summernote-bs3.css">
+    <link href="../../static/assets/css/minimal.css" rel="stylesheet">
+    <style>
+	.gradeA td{font-family:"微软雅黑";}
+	.gradeA-green{ color:#3bff8e; }
+	#demo .table-custom .gradeA { height:64px; border-bottom:0; border-top:0;}
+	body #content #demo1 .table-custom >tr > td {
+    font-size: 14px;}
+	</style>
+  </head>
+  <body class="bg-1">	
+        <div id="content" class="col-md-12" >
+          <div class="main">
+			<!-- row -->
+            <div class="row">
+			  <!-- col-md-12 -->
+              <div class="col-md-12"> 
+				<!-- 列表 -->
+                <section class="tile transparent tile-height" style="height:50%;margin-bottom:15px;">
+                  <!-- 标题 -->
+                  <div class="tile-header transparent">
+                    <h1>移动终端漏洞详情</h1>
+                  </div>
+				  <!-- 列表-表头 -->
+				  <div class="tile-body color transparent-white rounded-corners padding" style="border:1px solid rgba(50,248,255,0.06);border-bottom:0;">
+                    
+                    <div class="table-responsive">
+						<table  class="table table-datatable table-custom" id="inlineEditDataTable ">
+							<thead>
+								<tr class="odd gradeA">
+									<td class="sort-alpha sort-alpha-width">用户头像</td>									
+									<td class="sort-amount sort-amount-width">操作系统版本</td>
+									<td class="sort-numeric">漏洞详情</td>
+								</tr>
+							</thead>
+						</table >
+					</div>
+				  </div>
+				   <!-- 列表-表单 -->
+                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:74%; border:1px solid rgba(50,248,255,0.06);border-top:0;">                   
+                    <div id="demo1" class="table-responsive;">
+                      <table  class="table table-datatable table-custom" id="inlineEditDataTable">
+                        
+                        
+                          <tr class="odd gradeA" >
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.0.local_ip}}.jpg"  alt="picture" /></td>                            
+                            <td class="sort-amount-width">Android 4.4.4</td>
+                            <td>该版本存在136个安全漏洞<a class="gradeA-green">（CVE-2016-8459，CVE-2016-8418，CVE-2016-8440等）</a></td>
+                          </tr>
+                          <tr class="odd gradeA">
+                            <td class="img-size sort-alpha-width" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.1.local_ip}}.jpg"  alt="picture" /></td>                            
+                            <td class="sort-amount-width">Android 5.0</td>
+                            <td>该版本存在35个安全漏洞<a class="gradeA-green">（CVE-2016-6604，CVE-2016-8443，CVE-2016-8438等）</a></td>
+                          </tr>
+                          <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.2.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Android 5.0.2</td>
+                            <td>该版本存在29个安全漏洞<a class="gradeA-green">（CVE-2017-0410，CVE-2017-0417，CVE-2017-0419等）</a></td>
+                          </tr>
+                          <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.3.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Android 5.1.1</td>
+                            <td>该版本存在44个安全漏洞<a class="gradeA-green">（CVE-2016-6784，CVE-2017-0384，CVE-2016-8436等）</a></td>
+                          </tr>
+                          <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.4.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Android 6.0</td>
+                            <td>该版本存在50个安全漏洞<a class="gradeA-green">（CVE-2016-8418，CVE-2017-0406，CVE-2017-0417等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.5.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Android 6.0.1</td>
+                            <td>该版本存在15个安全漏洞<a class="gradeA-green">（CVE-2017-0407，CVE-2017-0410，CVE-2017-0419等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.6.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Android 7.0</td>
+                            <td>该版本存在49个安全漏洞<a class="gradeA-green">（CVE-2017-0405，CVE-2017-0411，CVE-2017-0384等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.7.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Android 7.1.1</td>
+                            <td>该版本存在26个安全漏洞<a class="gradeA-green">（CVE-2017-0408，CVE-2017-0411，CVE-2017-0383等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.8.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 9.0.2</td>
+                            <td>该版本存在13个安全漏洞<a class="gradeA-green">（CVE-2015-7017，CVE-2015-7004，CVE-2015-6979等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.9.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 9.1</td>
+                            <td>该版本存在45个安全漏洞<a class="gradeA-green">（CVE-2015-7112，CVE-2015-7111，CVE-2015-7079等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.10.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 9.2.1</td>
+                            <td>该版本存在24个安全漏洞<a class="gradeA-green">（CVE-2016-1751，CVE-2016-1756，CVE-2016-1762等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.11.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 9.3</td>
+                            <td>该版本存在39个安全漏洞<a class="gradeA-green">（CVE-2016-1831，CVE-2016-1813，CVE-2016-1829等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.12.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 9.3.2</td>
+                            <td>该版本存在50个安全漏洞<a class="gradeA-green">（CVE-2016-4738，CVE-2016-4724，CVE-2016-4777等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.13.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 10</td>
+                            <td>该版本存在18个安全漏洞<a class="gradeA-green">（CVE-2016-7581，CVE-2016-4675，CVE-2016-4669等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.14.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 10.1</td>
+                            <td>该版本存在67个安全漏洞<a class="gradeA-green">（CVE-2016-7644，CVE-2016-7660，CVE-2016-7612等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.15.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Apple iOS 10.2</td>
+                            <td>该版本存在16个安全漏洞<a class="gradeA-green">（CVE-2017-2373，CVE-2017-2370，CVE-2017-2360等）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.16.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Windows Phone 7</td>
+                            <td>该版本存在3个安全漏洞<a class="gradeA-green">（CVE-2012-2993，BID-51179，BID-61592，BID-71152）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.17.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Windows Phone 7.5</td>
+                            <td>该版本存在2个安全漏洞<a class="gradeA-green">（BID-51179，BID-71152）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.18.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Windows Phone 7.8</td>
+                            <td>该版本存在2个安全漏洞<a class="gradeA-green">（BID-61592，BID-71152）</a></td>
+                          </tr>
+						  <tr class="odd gradeA">
+                            <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ sheep_users.19.local_ip}}.jpg"  alt="picture" /></td>
+                            <td class="sort-amount-width">Windows Phone 8.1</td>
+                            <td>该版本存在1个严重安全漏洞攻击者可以利用该漏洞破解诺基亚Lumia手机</td>
+                          </tr>                       
+                      </table>
+                    </div>
+					<div id="demo2"></div>  
+                  </div>
+                 <!-- 列表-表单end -->
+                </section>
+				<!-- 列表end -->
+				<!-- OS比例	-->
+                <section class="tile color transparent-black" style="height:45%;">
+                  <!-- 饼图1 -->
+				  <div class="transparent-black-body">
+					<div class="tile-body tile-body-padding">
+						<div id="browser-usage" class="morris-chart" ></div>
+						<ul class="chart-legend" style="float:left; ">
+							<li><span class="badge badge-outline" style="border-color: #00a3d8;"></span> Andriod</li>
+							<li><span class="badge badge-outline" style="border-color: #d9544f;"></span> IOS</li>
+							<li><span class="badge badge-outline" style="border-color: #ffc100;"></span> Windows</li>
+						</ul>
+					</div>
+                  <!-- 饼图2 -->
+					<div class="tile-body tile-body-padding">
+						<div id="browser-usage-one" class="morris-chart"></div>
+						<ul class="chart-legend inline text-center" style=" margin-right:0; overflow:hideen; padding-left:30px;">
+							<li><span class="badge badge-outline" style="border-color: #00a3d8"></span>微信</li>
+							<li><span class="badge badge-outline" style="border-color: #00e8a9"></span>QQ</li>
+							<li><span class="badge badge-outline" style="border-color: #d9544f"></span>新浪微博</li>
+							<li><span class="badge badge-outline" style="border-color: #ffc100"></span>百度</li>
+							<li><span class="badge badge-outline" style="border-color: #005e81"></span>其他 </li>
+						</ul>
+					</div>
+				  </div>
+                </section>
+				<!-- OS比例end	-->
+              </div>  
+			  <!-- col-md-12 end-->			  
+            </div>
+			<!-- row end -->
+          </div>
+        </div>
+
+    <!-- jQuery-->
+	<script src="../../static/assets/js/jquery.js"></script>
+    <script src="../../static/assets/js/raphael-min.js"></script>
+    <script src="../../static/assets/js/morris.min.js"></script>
+    <script>
+	
+	<!-- 信息滚动js --> 
+	var speed = 20;  // 滚动速度
+	demo2.innerHTML = demo1.innerHTML;  
+	function Marquee() {  
+		if (demo2.offsetTop - demo.scrollTop <= 0) {  
+			demo.scrollTop -= demo1.offsetHeight;  
+		} else {  
+			demo.scrollTop++;  
+		}  
+	}  
+	var MyMar = setInterval(Marquee, speed);    
+	demo.onmouseover = function() {  
+		clearInterval(MyMar);  
+	}  
+  
+	demo.onmouseout = function() {  
+		MyMar = setInterval(Marquee, speed);  
+	}  
+	<!-- OS比例js--> 
+    $(function(){
+    Morris.Donut({
+        element: 'browser-usage',
+        data: [
+          {label: "操作系统", value: 58},			<!-- 此处更换饼图数据--> 
+          {label: "操作系统", value: 37},
+          {label: "操作系统", value: 5}
+        ],
+        colors: ['#00a3d8', '#d9544f', '#ffc100', '#1693A5']
+    });
+
+    Morris.Donut({
+        element: 'browser-usage-one',
+        data: [
+          {label: "应用程序", value: 52},    <!-- 此处更换饼图数据-->  
+          {label: "应用程序", value: 9},
+          {label: "应用程序", value: 6},
+          {label: "应用程序", value: 13},
+          {label: "应用程序", value: 20},
+        ],
+        colors: ['#00a3d8', '#00e8a9','#d9544f', '#ffc100',  '#005e81', ]
+    });
+
+    $('#browser-usage').find("path[stroke='#ffffff']").attr('stroke', 'rgba(0,0,0,0)');
+	$('#browser-usage-one').find("path[stroke='#ffffff']").attr('stroke', 'rgba(0,0,0,0)');
+
+    //sparkline charts
+    $('#projectbar1').sparkline('html', {type: 'bar', barColor: '#22beef', barWidth: 4, height: 20});
+    $('#projectbar2').sparkline('html', {type: 'bar', barColor: '#cd97eb', barWidth: 4, height: 20});
+    $('#projectbar3').sparkline('html', {type: 'bar', barColor: '#a2d200', barWidth: 4, height: 20});
+    $('#projectbar4').sparkline('html', {type: 'bar', barColor: '#ffc100', barWidth: 4, height: 20});
+    $('#projectbar5').sparkline('html', {type: 'bar', barColor: '#ff4a43', barWidth: 4, height: 20});
+    $('#projectbar6').sparkline('html', {type: 'bar', barColor: '#a2d200', barWidth: 4, height: 20});
+ 
+    })
+      
+    </script>
+  </body>
+</html>
+      

@@ -35,7 +35,7 @@
                     <h1 style="font-family:微软雅黑">移动终端信息展示</h1>
                   </div>
                   <!-- 列表-表头 -->
-                  <div class="tile-body color transparent-white padding">
+                  <div class="tile-body color transparent-white padding" style="border:1px solid rgba(50,248,255,0.06);border-bottom:0;">
                     <div class="table-responsive">
                         <table  class="table table-datatable table-custom" id="inlineEditDataTable ">
                             <thead>
@@ -50,22 +50,22 @@
                     </div>
                   </div>
                    <!-- 列表-表单 -->
-                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:85%;">
-					<div id="demo1" >
+                  <div id="demo" class="tile-body color transparent-white transparent-height" style="height:85%;border:1px solid rgba(50,248,255,0.06);border-top:0;">
+					<div id="demo1" class="table-responsive;">
                       <table  class="table table-datatable table-custom" id="inlineEditDataTable" style="border-collapse:collapse; ">
                           {% for wifiuser, behavior in sheep_users %}
                               <tr class="odd gradeA" >
-                                <td class="img-size" ><img src="../../static/assets/images/wifiuserimgs/headimg/{{ wifiuser.local_ip }}.jpg"  alt="picture" /></td>
+                                <td class="img-size" ><label class='user_id' style='display:none'>{{ wifiuser.id }}</label><img src="../../static/assets/images/wifiuserimgs/headimg/{{ wifiuser.local_ip }}.jpg"  alt="picture" /></td>
                                 <td class="sort-alpha-two">{{ wifiuser.wechat_nickname }}</td>
                                 {% if behavior.application %}
-                                    {% ifequal behavior.client '' %}
-                                    <td class="sort-amount-width">Unknown</td>
+                                    {% ifequal wifiuser.os_type '' %}
+                                    <td class="sort-amount-width">正在获取</td>
                                     {% else %}
-                                    <td class="sort-amount-width">{{ behavior.client }}</td>
+                                    <td class="sort-amount-width">{{ wifiuser.os_type }}</td>
                                     {% endifequal %}
                                     <td> 正在使用 <span style="color:#35ff8f;">{{ behavior.application }}，</span>进行 <span style="color:#35ff8f;">{{ behavior.behavior }}</span></td>
                                 {% else %}
-                                    <td class="sort-amount-width">Unknown</td>
+                                    <td class="sort-amount-width">正在获取</td>
                                     <td> 暂无操作 </td>
                                 {% endif %}
                               </tr>
@@ -73,7 +73,7 @@
 
                       </table>
 					</div>
-					<div id="demo2"></div>
+					<div id="demo2"></div>  
                   </div>
                 </section>
                 <!-- 列表end -->
@@ -82,9 +82,16 @@
                   <div class="tile-body tile-height-one" >
                     <button class="md-trigger" data-modal="modal-11" style="border:0; padding:0;"></button>
                     <!-- 二维码-->
-                    <div class="morris-chart morris-chart-height" >
-                         <span style=" text-align:center; display:block;">扫码关注我们</span>
+                    <div class="morris-chart morris-chart-height" >                        
                          <img src="../../static/assets/images/erweima1.png"  alt="picture" style="background-color:#ffffff;" style=" height:auto;min-width:100%;" />
+						 <span ><strong class="font-strong">第一步:</strong>扫码关注公众号</span>
+                    </div>
+					<div class="morris-chart-height morris-chart-height-add">	
+                         <img src="../../static/assets/images/jiantoumm.png"  alt="picture"/>
+                    </div>
+					<div class="morris-chart morris-chart-height" style=" margin-right:0;" >                        
+                         <img src="../../static/assets/images/erweima2.png"  alt="picture" style="background-color:#ffffff;" style=" height:auto;min-width:100%;" />
+						 <span><strong class="font-strong">第二步:</strong>扫码连接WIFI网络</span>
                     </div>
                   </div>
                   <!-- /tile body -->
@@ -98,9 +105,10 @@
         </div>
 
 
-        <!-- 弹出页面 -->
+        <!-- 弹出页面 --> 
         <div class="md-modal md-effect-11 " id="modal-11">
-
+			<div class="md-content " id="modal-content">
+            </div>
         </div>
         <div class="md-overlay"></div>
         <!-- 弹出页面 end -->
@@ -111,61 +119,35 @@
         </script>
         <script src="../../static/assets/js/jquery.js" charset="UTF-8"></script>
         <script src="../../static/assets/js/index.js" charset="UTF-8"></script>
+        <script src="../../static/assets/js/jquery.mousewheel.js" charset="UTF-8"></script>
         
         <!-- 信息滚动js -->
-        <script>   
+        <script>
+	
 		<!-- 信息滚动js --> 
 		var speed = 20;  // 滚动速度
-		demo2.innerHTML = demo1.innerHTML;  
+		demo2.innerHTML=demo1.innerHTML;  
 		function Marquee() {  
-			if (demo2.offsetTop - demo.scrollTop <= 0) {  
-				demo.scrollTop -= demo1.offsetHeight;  
+			if ($('.odd, .gradeA')[1].offsetHeight*($('.odd, .gradeA').length-1)-demo.offsetHeight-demo.scrollTop<=0) {  
+				demo.scrollTop-=demo1.offsetHeight;  
 			} else {  
 				demo.scrollTop++;  
 			}  
 		}  
-		var MyMar = setInterval(Marquee, speed);    
+        
+		var MyMar = setInterval(Marquee, speed);
 		demo.onmouseover = function() {  
-			clearInterval(MyMar);  
-		}  
-	  
+			clearInterval(MyMar);
+            $('#demo').mousewheel(function(event, delta) {
+                demo.scrollTop += delta;
+            });
+		}  	  
 		demo.onmouseout = function() {  
 			MyMar = setInterval(Marquee, speed);  
 		}  
-        /**function marques(lh,speed,delay){    
-            var intervalFunction;    
-            var oHeight = 210;**/  /** div的高度 **/ 
-       /**     var scrollDiv=document.getElementById("demo");    
-            var preTop = 0;   
-            scrollDiv.scrollTop = 0;   
-        //var p=false;   
-         
-            function start(){    
-                intervalFunction=setInterval(scrolling,speed);       
-            };    
-        
-            function scrolling(){  
-                if( scrollDiv.scrollHeight-scrollDiv.offsetHeight<scrollDiv.scrollTop){   
-                    preTop = scrollDiv.scrollTop;   
-                    scrollDiv.scrollTop+=1;   
-                    if(preTop >= scrollDiv.scrollHeight || preTop==scrollDiv.scrollTop){   
-                        scrollDiv.scrollTop = 0;   
-                    }   
-                }else{   
-                //clearInterval(intervalFunction);    清除定时器
-                //setTimeout(start,delay);    //继续定时器
-                }  
-                scrollDiv.scrollTop+=1; 
-                
-                scrollDiv.onmouseover=function() {clearInterval(intervalFunction)}; 
-                scrollDiv.onmouseout=function() {intervalFunction=setInterval(scrolling,speed)};  
-            };
-            
-            setTimeout(start,delay);    
-        };
-        marques(50,20,400);   **/  
-    /**marquees(一次滚动高度,速度,停留时间);**/    
-</script>
+
+        </script> 
   </body>
+  
 </html>
       

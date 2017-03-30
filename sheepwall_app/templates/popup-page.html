@@ -1,4 +1,4 @@
-<div class="md-content " >
+
                 <!-- 用户头像-->
                 <div class="img" >
                     <img class="headimg" src="../../static/assets/images/wifiuserimgs/headimg/{{ current_user.local_ip }}.jpg"  alt="picture"/>
@@ -9,6 +9,7 @@
                     <div class="popup-title" >
                             <ul>
                                 <li id="wechat_id" style="display:none">{{ current_user.id }}</li>
+                                <li id="current_newuser_id" style="display:none">{{ newest_user_id }}</li>
                                 <li>微信昵称：<span>{{ current_user.wechat_nickname }}</span></li>
                                 <li>操作系统：<span>{{ latest5_behavior.0.0.client }}</span></li>
                                 <li style="margin-right:0;">IP地址: <span>{{ current_user.local_ip }}</span></li>
@@ -92,4 +93,4 @@
                     <!-- 用户画像 end-->
                 </div>
                 <!-- 用户各种信息 end-->
-</div>
+
